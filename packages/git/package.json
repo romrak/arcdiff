@@ -1,0 +1,19 @@
+{
+  "name": "@arcdiff/git",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "development": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./hunks": {
+      "types": "./dist/hunks.d.ts",
+      "development": "./src/hunks.ts",
+      "default": "./dist/hunks.js"
+    }
+  }
+}
