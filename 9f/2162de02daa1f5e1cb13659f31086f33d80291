@@ -1,0 +1,21 @@
+packages/git/src/pr.test.ts
+  s_3835612dc0b108::t_70623573a4d1bc 40-55,100-105
+packages/git/src/pr.ts
+  s_3835612dc0b108::t_ca932325429ccf 33,119-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9f2162de02daa1f5e1cb13659f31086f33d80291",
+  "prompts": {},
+  "sessions": {
+    "s_3835612dc0b108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "635e3b98-ba57-4aba-b8d2-76d24dde2635",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Rakus <12465624+romrak@users.noreply.github.com>"
+    }
+  }
+}
