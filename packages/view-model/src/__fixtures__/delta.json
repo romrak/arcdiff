@@ -1,0 +1,4274 @@
+{
+  "delta": {
+    "base": "bfaabbcc0f302443f25b61b751deea068385acb9",
+    "head": "f451950e675a1305bd2f523598d1f6474541721b",
+    "elements": [
+      {
+        "id": "pip._internal.build_env",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env",
+          "kind": "module",
+          "name": "build_env",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/__init__.py",
+          "range": [
+            1,
+            23
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env",
+          "kind": "module",
+          "name": "build_env",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/__init__.py",
+          "range": [
+            1,
+            25
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.__all__",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.__all__",
+          "kind": "field",
+          "name": "__all__",
+          "parent": "pip._internal.build_env",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/__init__.py",
+          "range": [
+            15,
+            23
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.__all__",
+          "kind": "field",
+          "name": "__all__",
+          "parent": "pip._internal.build_env",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/__init__.py",
+          "range": [
+            16,
+            25
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.base",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.base",
+          "kind": "module",
+          "name": "base",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            1,
+            97
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.base",
+          "kind": "module",
+          "name": "base",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            1,
+            103
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.base.BuildEnvironment",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.base.BuildEnvironment",
+          "kind": "interface",
+          "name": "BuildEnvironment",
+          "parent": "pip._internal.build_env.base",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            50,
+            97
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.base.BuildEnvironment",
+          "kind": "interface",
+          "name": "BuildEnvironment",
+          "parent": "pip._internal.build_env.base",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            52,
+            103
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.base.BuildEnvironment.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.base.BuildEnvironment.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.base.BuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            59,
+            59
+          ],
+          "lang": "python",
+          "abstract": true,
+          "signature": "(self, installer: BuildEnvironmentInstaller)",
+          "decoratorStart": 58
+        }
+      },
+      {
+        "id": "pip._internal.build_env.base.BuildEnvironment.python_executable",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.base.BuildEnvironment.python_executable",
+          "kind": "field",
+          "name": "python_executable",
+          "parent": "pip._internal.build_env.base.BuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            56,
+            56
+          ],
+          "lang": "python",
+          "signature": "str"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.base.BuildIsolationMode",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.base.BuildIsolationMode",
+          "kind": "field",
+          "name": "BuildIsolationMode",
+          "parent": "pip._internal.build_env.base",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            18,
+            18
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.base.BuildIsolationMode",
+          "kind": "field",
+          "name": "BuildIsolationMode",
+          "parent": "pip._internal.build_env.base",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            18,
+            18
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.base.Prefix",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.base.Prefix",
+          "kind": "class",
+          "name": "Prefix",
+          "parent": "pip._internal.build_env.base",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            25,
+            31
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.base.Prefix",
+          "kind": "class",
+          "name": "Prefix",
+          "parent": "pip._internal.build_env.base",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            25,
+            33
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.base.Prefix.__init__",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.base.Prefix.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.base.Prefix",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            26,
+            31
+          ],
+          "lang": "python",
+          "signature": "(self, path: str) -> None"
+        },
+        "after": {
+          "id": "pip._internal.build_env.base.Prefix.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.base.Prefix",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/base.py",
+          "range": [
+            27,
+            33
+          ],
+          "lang": "python",
+          "signature": "(self, path: str, *, venv_executable: str | None = None) -> None"
+        },
+        "fields": [
+          "signature"
+        ],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.installer",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.installer",
+          "kind": "module",
+          "name": "installer",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            1,
+            311
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.installer",
+          "kind": "module",
+          "name": "installer",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            1,
+            327
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller",
+          "kind": "class",
+          "name": "InprocessBuildEnvironmentInstaller",
+          "parent": "pip._internal.build_env.installer",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            143,
+            311
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller",
+          "kind": "class",
+          "name": "InprocessBuildEnvironmentInstaller",
+          "parent": "pip._internal.build_env.installer",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            153,
+            327
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller._install_impl",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller._install_impl",
+          "kind": "method",
+          "name": "_install_impl",
+          "parent": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            249,
+            288
+          ],
+          "lang": "python",
+          "signature": "(self, requirements: Iterable[str], prefix: Prefix) -> None"
+        },
+        "after": {
+          "id": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller._install_impl",
+          "kind": "method",
+          "name": "_install_impl",
+          "parent": "pip._internal.build_env.installer.InprocessBuildEnvironmentInstaller",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            263,
+            304
+          ],
+          "lang": "python",
+          "signature": "(self, requirements: Iterable[str], prefix: Prefix) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller",
+          "kind": "class",
+          "name": "SubprocessBuildEnvironmentInstaller",
+          "parent": "pip._internal.build_env.installer",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            37,
+            140
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller",
+          "kind": "class",
+          "name": "SubprocessBuildEnvironmentInstaller",
+          "parent": "pip._internal.build_env.installer",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            37,
+            150
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller.install",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller.install",
+          "kind": "method",
+          "name": "install",
+          "parent": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            50,
+            140
+          ],
+          "lang": "python",
+          "signature": "(self, requirements: Iterable[str], prefix: Prefix, *, kind: str, for_req: InstallRequirement | None) -> None"
+        },
+        "after": {
+          "id": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller.install",
+          "kind": "method",
+          "name": "install",
+          "parent": "pip._internal.build_env.installer.SubprocessBuildEnvironmentInstaller",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/installer.py",
+          "range": [
+            50,
+            150
+          ],
+          "lang": "python",
+          "signature": "(self, requirements: Iterable[str], prefix: Prefix, *, kind: str, for_req: InstallRequirement | None) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.noop",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.noop",
+          "kind": "module",
+          "name": "noop",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/noop.py",
+          "range": [
+            1,
+            41
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.noop",
+          "kind": "module",
+          "name": "noop",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/noop.py",
+          "range": [
+            1,
+            42
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.noop.NoOpBuildEnvironment",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.noop.NoOpBuildEnvironment",
+          "kind": "class",
+          "name": "NoOpBuildEnvironment",
+          "parent": "pip._internal.build_env.noop",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/noop.py",
+          "range": [
+            13,
+            41
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.noop.NoOpBuildEnvironment",
+          "kind": "class",
+          "name": "NoOpBuildEnvironment",
+          "parent": "pip._internal.build_env.noop",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/noop.py",
+          "range": [
+            14,
+            42
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.noop.NoOpBuildEnvironment.__init__",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.noop.NoOpBuildEnvironment.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.noop.NoOpBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/noop.py",
+          "range": [
+            16,
+            17
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        },
+        "after": {
+          "id": "pip._internal.build_env.noop.NoOpBuildEnvironment.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.noop.NoOpBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/noop.py",
+          "range": [
+            17,
+            18
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.venv",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv",
+          "kind": "module",
+          "name": "venv",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            1,
+            145
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.venv.VenvBuildEnvironment",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "kind": "class",
+          "name": "VenvBuildEnvironment",
+          "parent": "pip._internal.build_env.venv",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            30,
+            145
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.venv.VenvBuildEnvironment.__enter__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv.VenvBuildEnvironment.__enter__",
+          "kind": "method",
+          "name": "__enter__",
+          "parent": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            105,
+            117
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.venv.VenvBuildEnvironment.__exit__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv.VenvBuildEnvironment.__exit__",
+          "kind": "method",
+          "name": "__exit__",
+          "parent": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            119,
+            129
+          ],
+          "lang": "python",
+          "signature": "(self, exc_type: type[BaseException] | None, exc_val: BaseException | None, exc_tb: TracebackType | None) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.venv.VenvBuildEnvironment.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv.VenvBuildEnvironment.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            33,
+            103
+          ],
+          "lang": "python",
+          "signature": "(self, installer: BuildEnvironmentInstaller) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.venv.VenvBuildEnvironment.install_requirements",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv.VenvBuildEnvironment.install_requirements",
+          "kind": "method",
+          "name": "install_requirements",
+          "parent": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            131,
+            145
+          ],
+          "lang": "python",
+          "signature": "(self, requirements: Iterable[str], prefix_as_string: str, *, kind: str, for_req: InstallRequirement | None = None) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.venv._get_venv_path_from_sysconfig",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.build_env.venv._get_venv_path_from_sysconfig",
+          "kind": "function",
+          "name": "_get_venv_path_from_sysconfig",
+          "parent": "pip._internal.build_env.venv",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/venv.py",
+          "range": [
+            22,
+            27
+          ],
+          "lang": "python",
+          "signature": "(name: str, env_dir: str) -> str"
+        }
+      },
+      {
+        "id": "pip._internal.build_env.virtual",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.virtual",
+          "kind": "module",
+          "name": "virtual",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/virtual.py",
+          "range": [
+            1,
+            135
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.virtual",
+          "kind": "module",
+          "name": "virtual",
+          "parent": null,
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/virtual.py",
+          "range": [
+            1,
+            139
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.virtual.VirtualBuildEnvironment",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.virtual.VirtualBuildEnvironment",
+          "kind": "class",
+          "name": "VirtualBuildEnvironment",
+          "parent": "pip._internal.build_env.virtual",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/virtual.py",
+          "range": [
+            28,
+            135
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.build_env.virtual.VirtualBuildEnvironment",
+          "kind": "class",
+          "name": "VirtualBuildEnvironment",
+          "parent": "pip._internal.build_env.virtual",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/virtual.py",
+          "range": [
+            29,
+            139
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.build_env.virtual.VirtualBuildEnvironment.__init__",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.build_env.virtual.VirtualBuildEnvironment.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.virtual.VirtualBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/virtual.py",
+          "range": [
+            34,
+            87
+          ],
+          "lang": "python",
+          "signature": "(self, installer: BuildEnvironmentInstaller) -> None"
+        },
+        "after": {
+          "id": "pip._internal.build_env.virtual.VirtualBuildEnvironment.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.build_env.virtual.VirtualBuildEnvironment",
+          "package": "pip._internal.build_env",
+          "file": "pip/_internal/build_env/virtual.py",
+          "range": [
+            37,
+            91
+          ],
+          "lang": "python",
+          "signature": "(self, installer: BuildEnvironmentInstaller) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.cmdoptions",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.cmdoptions",
+          "kind": "module",
+          "name": "cmdoptions",
+          "parent": null,
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            1,
+            1301
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.cli.cmdoptions",
+          "kind": "module",
+          "name": "cmdoptions",
+          "parent": null,
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            1,
+            1312
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.cmdoptions.general_group",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.cmdoptions.general_group",
+          "kind": "field",
+          "name": "general_group",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            1248,
+            1278
+          ],
+          "lang": "python",
+          "signature": "dict[str, Any]"
+        },
+        "after": {
+          "id": "pip._internal.cli.cmdoptions.general_group",
+          "kind": "field",
+          "name": "general_group",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            1258,
+            1289
+          ],
+          "lang": "python",
+          "signature": "dict[str, Any]"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.cmdoptions.no_proxy_env",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.cli.cmdoptions.no_proxy_env",
+          "kind": "field",
+          "name": "no_proxy_env",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            321,
+            328
+          ],
+          "lang": "python",
+          "signature": "Callable[..., Option]"
+        }
+      },
+      {
+        "id": "pip._internal.cli.cmdoptions.proxy",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.cmdoptions.proxy",
+          "kind": "field",
+          "name": "proxy",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            312,
+            319
+          ],
+          "lang": "python",
+          "signature": "Callable[..., Option]"
+        },
+        "after": {
+          "id": "pip._internal.cli.cmdoptions.proxy",
+          "kind": "field",
+          "name": "proxy",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            312,
+            319
+          ],
+          "lang": "python",
+          "signature": "Callable[..., Option]"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.cmdoptions.use_new_feature",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.cmdoptions.use_new_feature",
+          "kind": "field",
+          "name": "use_new_feature",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            1215,
+            1228
+          ],
+          "lang": "python",
+          "signature": "Callable[..., Option]"
+        },
+        "after": {
+          "id": "pip._internal.cli.cmdoptions.use_new_feature",
+          "kind": "field",
+          "name": "use_new_feature",
+          "parent": "pip._internal.cli.cmdoptions",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/cmdoptions.py",
+          "range": [
+            1224,
+            1238
+          ],
+          "lang": "python",
+          "signature": "Callable[..., Option]"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.index_command",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.index_command",
+          "kind": "module",
+          "name": "index_command",
+          "parent": null,
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/index_command.py",
+          "range": [
+            1,
+            212
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.cli.index_command",
+          "kind": "module",
+          "name": "index_command",
+          "parent": null,
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/index_command.py",
+          "range": [
+            1,
+            216
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.index_command.SessionCommandMixin",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.index_command.SessionCommandMixin",
+          "kind": "class",
+          "name": "SessionCommandMixin",
+          "parent": "pip._internal.cli.index_command",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/index_command.py",
+          "range": [
+            54,
+            137
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.cli.index_command.SessionCommandMixin",
+          "kind": "class",
+          "name": "SessionCommandMixin",
+          "parent": "pip._internal.cli.index_command",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/index_command.py",
+          "range": [
+            54,
+            141
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.index_command.SessionCommandMixin._build_session",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.index_command.SessionCommandMixin._build_session",
+          "kind": "method",
+          "name": "_build_session",
+          "parent": "pip._internal.cli.index_command.SessionCommandMixin",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/index_command.py",
+          "range": [
+            87,
+            137
+          ],
+          "lang": "python",
+          "signature": "(self, options: Values, retries: int | None = None, timeout: int | None = None) -> PipSession"
+        },
+        "after": {
+          "id": "pip._internal.cli.index_command.SessionCommandMixin._build_session",
+          "kind": "method",
+          "name": "_build_session",
+          "parent": "pip._internal.cli.index_command.SessionCommandMixin",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/index_command.py",
+          "range": [
+            87,
+            141
+          ],
+          "lang": "python",
+          "signature": "(self, options: Values, retries: int | None = None, timeout: int | None = None) -> PipSession"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.req_command",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.req_command",
+          "kind": "module",
+          "name": "req_command",
+          "parent": null,
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/req_command.py",
+          "range": [
+            1,
+            476
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.cli.req_command",
+          "kind": "module",
+          "name": "req_command",
+          "parent": null,
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/req_command.py",
+          "range": [
+            1,
+            490
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.req_command.RequirementCommand",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.req_command.RequirementCommand",
+          "kind": "class",
+          "name": "RequirementCommand",
+          "parent": "pip._internal.cli.req_command",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/req_command.py",
+          "range": [
+            141,
+            476
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.cli.req_command.RequirementCommand",
+          "kind": "class",
+          "name": "RequirementCommand",
+          "parent": "pip._internal.cli.req_command",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/req_command.py",
+          "range": [
+            142,
+            490
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.cli.req_command.RequirementCommand.make_requirement_preparer",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.cli.req_command.RequirementCommand.make_requirement_preparer",
+          "kind": "method",
+          "name": "make_requirement_preparer",
+          "parent": "pip._internal.cli.req_command.RequirementCommand",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/req_command.py",
+          "range": [
+            157,
+            231
+          ],
+          "lang": "python",
+          "signature": "(cls, temp_build_dir: TempDirectory, options: Values, build_tracker: BuildTracker, session: PipSession, finder: PackageFinder, use_user_site: bool, download_dir: str | None = None, verbosity: int = 0) -> RequirementPreparer",
+          "decoratorStart": 156
+        },
+        "after": {
+          "id": "pip._internal.cli.req_command.RequirementCommand.make_requirement_preparer",
+          "kind": "method",
+          "name": "make_requirement_preparer",
+          "parent": "pip._internal.cli.req_command.RequirementCommand",
+          "package": "pip._internal.cli",
+          "file": "pip/_internal/cli/req_command.py",
+          "range": [
+            158,
+            245
+          ],
+          "lang": "python",
+          "signature": "(cls, temp_build_dir: TempDirectory, options: Values, build_tracker: BuildTracker, session: PipSession, finder: PackageFinder, use_user_site: bool, download_dir: str | None = None, verbosity: int = 0) -> RequirementPreparer",
+          "decoratorStart": 157
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.debug",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.debug",
+          "kind": "module",
+          "name": "debug",
+          "parent": null,
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/debug.py",
+          "range": [
+            1,
+            195
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.commands.debug",
+          "kind": "module",
+          "name": "debug",
+          "parent": null,
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/debug.py",
+          "range": [
+            1,
+            195
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.debug.ca_bundle_info",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.debug.ca_bundle_info",
+          "kind": "function",
+          "name": "ca_bundle_info",
+          "parent": "pip._internal.commands.debug",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/debug.py",
+          "range": [
+            135,
+            149
+          ],
+          "lang": "python",
+          "signature": "(config: Configuration) -> str"
+        },
+        "after": {
+          "id": "pip._internal.commands.debug.ca_bundle_info",
+          "kind": "function",
+          "name": "ca_bundle_info",
+          "parent": "pip._internal.commands.debug",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/debug.py",
+          "range": [
+            135,
+            149
+          ],
+          "lang": "python",
+          "signature": "(config: Configuration) -> str"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.index",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.index",
+          "kind": "module",
+          "name": "index",
+          "parent": null,
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/index.py",
+          "range": [
+            1,
+            166
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.commands.index",
+          "kind": "module",
+          "name": "index",
+          "parent": null,
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/index.py",
+          "range": [
+            1,
+            173
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.index.IndexCommand",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.index.IndexCommand",
+          "kind": "class",
+          "name": "IndexCommand",
+          "parent": "pip._internal.commands.index",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/index.py",
+          "range": [
+            30,
+            166
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.commands.index.IndexCommand",
+          "kind": "class",
+          "name": "IndexCommand",
+          "parent": "pip._internal.commands.index",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/index.py",
+          "range": [
+            35,
+            173
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.index.IndexCommand.run",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.index.IndexCommand.run",
+          "kind": "method",
+          "name": "run",
+          "parent": "pip._internal.commands.index.IndexCommand",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/index.py",
+          "range": [
+            65,
+            87
+          ],
+          "lang": "python",
+          "signature": "(self, options: Values, args: list[str]) -> int"
+        },
+        "after": {
+          "id": "pip._internal.commands.index.IndexCommand.run",
+          "kind": "method",
+          "name": "run",
+          "parent": "pip._internal.commands.index.IndexCommand",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/index.py",
+          "range": [
+            70,
+            94
+          ],
+          "lang": "python",
+          "signature": "(self, options: Values, args: list[str]) -> int"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.distributions.sdist",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.distributions.sdist",
+          "kind": "module",
+          "name": "sdist",
+          "parent": null,
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            1,
+            167
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.distributions.sdist",
+          "kind": "module",
+          "name": "sdist",
+          "parent": null,
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            1,
+            184
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.distributions.sdist.SourceDistribution",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution",
+          "kind": "class",
+          "name": "SourceDistribution",
+          "parent": "pip._internal.distributions.sdist",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            19,
+            167
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution",
+          "kind": "class",
+          "name": "SourceDistribution",
+          "parent": "pip._internal.distributions.sdist",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            24,
+            184
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.distributions.sdist.SourceDistribution._install_build_reqs",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution._install_build_reqs",
+          "kind": "method",
+          "name": "_install_build_reqs",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            122,
+            141
+          ],
+          "lang": "python",
+          "signature": "(self, build_env_installer: BuildEnvironmentInstaller) -> None"
+        },
+        "after": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution._install_build_reqs",
+          "kind": "method",
+          "name": "_install_build_reqs",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            138,
+            158
+          ],
+          "lang": "python",
+          "signature": "(self, build_env_installer: BuildEnvironmentInstaller) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_backend",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_backend",
+          "kind": "method",
+          "name": "_prepare_build_backend",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            73,
+            102
+          ],
+          "lang": "python",
+          "signature": "(self, build_isolation: BuildIsolationMode, build_env_installer: BuildEnvironmentInstaller) -> None"
+        },
+        "after": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_backend",
+          "kind": "method",
+          "name": "_prepare_build_backend",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            91,
+            118
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        },
+        "fields": [
+          "signature"
+        ],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_env",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_env",
+          "kind": "method",
+          "name": "_prepare_build_env",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            79,
+            89
+          ],
+          "lang": "python",
+          "signature": "(self, build_isolation: BuildIsolationMode, build_env_installer: BuildEnvironmentInstaller) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.distributions.sdist.SourceDistribution.prepare_distribution_metadata",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution.prepare_distribution_metadata",
+          "kind": "method",
+          "name": "prepare_distribution_metadata",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            35,
+            71
+          ],
+          "lang": "python",
+          "signature": "(self, build_env_installer: BuildEnvironmentInstaller, build_isolation: BuildIsolationMode, check_build_deps: bool) -> None"
+        },
+        "after": {
+          "id": "pip._internal.distributions.sdist.SourceDistribution.prepare_distribution_metadata",
+          "kind": "method",
+          "name": "prepare_distribution_metadata",
+          "parent": "pip._internal.distributions.sdist.SourceDistribution",
+          "package": "pip._internal.distributions",
+          "file": "pip/_internal/distributions/sdist.py",
+          "range": [
+            40,
+            77
+          ],
+          "lang": "python",
+          "signature": "(self, build_env_installer: BuildEnvironmentInstaller, build_isolation: BuildIsolationMode, check_build_deps: bool) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.exceptions",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.exceptions",
+          "kind": "module",
+          "name": "exceptions",
+          "parent": null,
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1,
+            971
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.exceptions",
+          "kind": "module",
+          "name": "exceptions",
+          "parent": null,
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1,
+            1145
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.exceptions.ConnectionFailedError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ConnectionFailedError",
+          "kind": "class",
+          "name": "ConnectionFailedError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            342,
+            385
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ConnectionFailedError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ConnectionFailedError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.ConnectionFailedError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            345,
+            385
+          ],
+          "lang": "python",
+          "signature": "(self, url: str, host: str, error: Exception) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ConnectionFailedError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ConnectionFailedError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.ConnectionFailedError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            343,
+            343
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ConnectionTimeoutError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ConnectionTimeoutError",
+          "kind": "class",
+          "name": "ConnectionTimeoutError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            388,
+            413
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ConnectionTimeoutError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ConnectionTimeoutError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.ConnectionTimeoutError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            391,
+            413
+          ],
+          "lang": "python",
+          "signature": "(self, url: str, host: str, *, kind: Literal['connect', 'read'], timeout: float) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ConnectionTimeoutError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ConnectionTimeoutError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.ConnectionTimeoutError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            389,
+            389
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ProxyConnectionError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ProxyConnectionError",
+          "kind": "class",
+          "name": "ProxyConnectionError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            439,
+            452
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ProxyConnectionError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ProxyConnectionError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.ProxyConnectionError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            442,
+            452
+          ],
+          "lang": "python",
+          "signature": "(self, url: str, proxy: str, error: urllib3.exceptions.ProxyError) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.ProxyConnectionError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.ProxyConnectionError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.ProxyConnectionError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            440,
+            440
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SSLMissingError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SSLMissingError",
+          "kind": "class",
+          "name": "SSLMissingError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            416,
+            424
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SSLMissingError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SSLMissingError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.SSLMissingError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            419,
+            424
+          ],
+          "lang": "python",
+          "signature": "(self, url: str) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SSLMissingError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SSLMissingError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.SSLMissingError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            417,
+            417
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SSLVerificationError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SSLVerificationError",
+          "kind": "class",
+          "name": "SSLVerificationError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            427,
+            436
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SSLVerificationError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SSLVerificationError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.SSLVerificationError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            430,
+            436
+          ],
+          "lang": "python",
+          "signature": "(self, url: str, host: str, error: urllib3.exceptions.SSLError) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SSLVerificationError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SSLVerificationError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.SSLVerificationError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            428,
+            428
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SidecarMetadataInconsistent",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SidecarMetadataInconsistent",
+          "kind": "class",
+          "name": "SidecarMetadataInconsistent",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            497,
+            511
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.SidecarMetadataInconsistent.__str__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.SidecarMetadataInconsistent.__str__",
+          "kind": "method",
+          "name": "__str__",
+          "parent": "pip._internal.exceptions.SidecarMetadataInconsistent",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            506,
+            511
+          ],
+          "lang": "python",
+          "signature": "(self) -> str"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.VenvCreationError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.VenvCreationError",
+          "kind": "class",
+          "name": "VenvCreationError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1131,
+            1145
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.VenvCreationError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.VenvCreationError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.VenvCreationError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1136,
+            1145
+          ],
+          "lang": "python",
+          "signature": "(self, context: str) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.VenvCreationError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.VenvCreationError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.VenvCreationError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1134,
+            1134
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.VenvImportError",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.VenvImportError",
+          "kind": "class",
+          "name": "VenvImportError",
+          "parent": "pip._internal.exceptions",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1106,
+            1128
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.VenvImportError.__init__",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.VenvImportError.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.exceptions.VenvImportError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1111,
+            1128
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.exceptions.VenvImportError.reference",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.exceptions.VenvImportError.reference",
+          "kind": "field",
+          "name": "reference",
+          "parent": "pip._internal.exceptions.VenvImportError",
+          "package": "pip._internal",
+          "file": "pip/_internal/exceptions.py",
+          "range": [
+            1109,
+            1109
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.index.collector",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.index.collector",
+          "kind": "module",
+          "name": "collector",
+          "parent": null,
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/collector.py",
+          "range": [
+            1,
+            487
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.index.collector",
+          "kind": "module",
+          "name": "collector",
+          "parent": null,
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/collector.py",
+          "range": [
+            1,
+            492
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.index.collector._get_index_content",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.index.collector._get_index_content",
+          "kind": "function",
+          "name": "_get_index_content",
+          "parent": "pip._internal.index.collector",
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/collector.py",
+          "range": [
+            318,
+            375
+          ],
+          "lang": "python",
+          "signature": "(link: Link, *, session: PipSession) -> IndexContent | None"
+        },
+        "after": {
+          "id": "pip._internal.index.collector._get_index_content",
+          "kind": "function",
+          "name": "_get_index_content",
+          "parent": "pip._internal.index.collector",
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/collector.py",
+          "range": [
+            324,
+            380
+          ],
+          "lang": "python",
+          "signature": "(link: Link, *, session: PipSession) -> IndexContent | None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.index.package_finder",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.index.package_finder",
+          "kind": "module",
+          "name": "package_finder",
+          "parent": null,
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/package_finder.py",
+          "range": [
+            1,
+            1111
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.index.package_finder",
+          "kind": "module",
+          "name": "package_finder",
+          "parent": null,
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/package_finder.py",
+          "range": [
+            1,
+            1115
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.index.package_finder.PackageFinder",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.index.package_finder.PackageFinder",
+          "kind": "class",
+          "name": "PackageFinder",
+          "parent": "pip._internal.index.package_finder",
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/package_finder.py",
+          "range": [
+            612,
+            1067
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.index.package_finder.PackageFinder",
+          "kind": "class",
+          "name": "PackageFinder",
+          "parent": "pip._internal.index.package_finder",
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/package_finder.py",
+          "range": [
+            612,
+            1071
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.index.package_finder.PackageFinder.no_proxy_env",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.index.package_finder.PackageFinder.no_proxy_env",
+          "kind": "method",
+          "name": "no_proxy_env",
+          "parent": "pip._internal.index.package_finder.PackageFinder",
+          "package": "pip._internal.index",
+          "file": "pip/_internal/index/package_finder.py",
+          "range": [
+            730,
+            731
+          ],
+          "lang": "python",
+          "signature": "(self) -> bool",
+          "decoratorStart": 729
+        }
+      },
+      {
+        "id": "pip._internal.metadata.base",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.metadata.base",
+          "kind": "module",
+          "name": "base",
+          "parent": null,
+          "package": "pip._internal.metadata",
+          "file": "pip/_internal/metadata/base.py",
+          "range": [
+            1,
+            691
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.metadata.base",
+          "kind": "module",
+          "name": "base",
+          "parent": null,
+          "package": "pip._internal.metadata",
+          "file": "pip/_internal/metadata/base.py",
+          "range": [
+            1,
+            690
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.metadata.base.BaseDistribution",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.metadata.base.BaseDistribution",
+          "kind": "interface",
+          "name": "BaseDistribution",
+          "parent": "pip._internal.metadata.base",
+          "package": "pip._internal.metadata",
+          "file": "pip/_internal/metadata/base.py",
+          "range": [
+            100,
+            582
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.metadata.base.BaseDistribution",
+          "kind": "interface",
+          "name": "BaseDistribution",
+          "parent": "pip._internal.metadata.base",
+          "package": "pip._internal.metadata",
+          "file": "pip/_internal/metadata/base.py",
+          "range": [
+            100,
+            581
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.metadata.base.BaseDistribution.editable_project_location",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.metadata.base.BaseDistribution.editable_project_location",
+          "kind": "method",
+          "name": "editable_project_location",
+          "parent": "pip._internal.metadata.base.BaseDistribution",
+          "package": "pip._internal.metadata",
+          "file": "pip/_internal/metadata/base.py",
+          "range": [
+            162,
+            181
+          ],
+          "lang": "python",
+          "signature": "(self) -> str | None",
+          "decoratorStart": 161
+        },
+        "after": {
+          "id": "pip._internal.metadata.base.BaseDistribution.editable_project_location",
+          "kind": "method",
+          "name": "editable_project_location",
+          "parent": "pip._internal.metadata.base.BaseDistribution",
+          "package": "pip._internal.metadata",
+          "file": "pip/_internal/metadata/base.py",
+          "range": [
+            162,
+            180
+          ],
+          "lang": "python",
+          "signature": "(self) -> str | None",
+          "decoratorStart": 161
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.auth",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.auth",
+          "kind": "module",
+          "name": "auth",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            1,
+            570
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.auth",
+          "kind": "module",
+          "name": "auth",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            1,
+            587
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.auth.KeyRingCliProvider",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.auth.KeyRingCliProvider",
+          "kind": "class",
+          "name": "KeyRingCliProvider",
+          "parent": "pip._internal.network.auth",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            106,
+            162
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.auth.KeyRingCliProvider",
+          "kind": "class",
+          "name": "KeyRingCliProvider",
+          "parent": "pip._internal.network.auth",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            107,
+            177
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.auth.KeyRingCliProvider._get_creds",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.network.auth.KeyRingCliProvider._get_creds",
+          "kind": "method",
+          "name": "_get_creds",
+          "parent": "pip._internal.network.auth.KeyRingCliProvider",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            127,
+            163
+          ],
+          "lang": "python",
+          "signature": "(self, service_name: str, username: str | None) -> AuthInfo | None"
+        }
+      },
+      {
+        "id": "pip._internal.network.auth.KeyRingCliProvider._get_password",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.network.auth.KeyRingCliProvider._get_password",
+          "kind": "method",
+          "name": "_get_password",
+          "parent": "pip._internal.network.auth.KeyRingCliProvider",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            132,
+            148
+          ],
+          "lang": "python",
+          "signature": "(self, service_name: str, username: str) -> str | None"
+        }
+      },
+      {
+        "id": "pip._internal.network.auth.KeyRingCliProvider.get_auth_info",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.auth.KeyRingCliProvider.get_auth_info",
+          "kind": "method",
+          "name": "get_auth_info",
+          "parent": "pip._internal.network.auth.KeyRingCliProvider",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            120,
+            127
+          ],
+          "lang": "python",
+          "signature": "(self, url: str, username: str | None) -> AuthInfo | None"
+        },
+        "after": {
+          "id": "pip._internal.network.auth.KeyRingCliProvider.get_auth_info",
+          "kind": "method",
+          "name": "get_auth_info",
+          "parent": "pip._internal.network.auth.KeyRingCliProvider",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            121,
+            122
+          ],
+          "lang": "python",
+          "signature": "(self, url: str, username: str | None) -> AuthInfo | None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.auth.MultiDomainBasicAuth",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.auth.MultiDomainBasicAuth",
+          "kind": "class",
+          "name": "MultiDomainBasicAuth",
+          "parent": "pip._internal.network.auth",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            227,
+            570
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.auth.MultiDomainBasicAuth",
+          "kind": "class",
+          "name": "MultiDomainBasicAuth",
+          "parent": "pip._internal.network.auth",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            242,
+            587
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.auth.MultiDomainBasicAuth.handle_401",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.auth.MultiDomainBasicAuth.handle_401",
+          "kind": "method",
+          "name": "handle_401",
+          "parent": "pip._internal.network.auth.MultiDomainBasicAuth",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            484,
+            545
+          ],
+          "lang": "python",
+          "signature": "(self, resp: Response, **kwargs) -> Response"
+        },
+        "after": {
+          "id": "pip._internal.network.auth.MultiDomainBasicAuth.handle_401",
+          "kind": "method",
+          "name": "handle_401",
+          "parent": "pip._internal.network.auth.MultiDomainBasicAuth",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/auth.py",
+          "range": [
+            499,
+            562
+          ],
+          "lang": "python",
+          "signature": "(self, resp: Response, **kwargs) -> Response"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.download",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.download",
+          "kind": "module",
+          "name": "download",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/download.py",
+          "range": [
+            1,
+            363
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.download",
+          "kind": "module",
+          "name": "download",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/download.py",
+          "range": [
+            1,
+            387
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.download.Downloader",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.download.Downloader",
+          "kind": "class",
+          "name": "Downloader",
+          "parent": "pip._internal.network.download",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/download.py",
+          "range": [
+            177,
+            363
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.download.Downloader",
+          "kind": "class",
+          "name": "Downloader",
+          "parent": "pip._internal.network.download",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/download.py",
+          "range": [
+            184,
+            387
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.download.Downloader._attempt_resumes_or_redownloads",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.download.Downloader._attempt_resumes_or_redownloads",
+          "kind": "method",
+          "name": "_attempt_resumes_or_redownloads",
+          "parent": "pip._internal.network.download.Downloader",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/download.py",
+          "range": [
+            234,
+            280
+          ],
+          "lang": "python",
+          "signature": "(self, download: _FileDownload, first_resp: Response) -> None"
+        },
+        "after": {
+          "id": "pip._internal.network.download.Downloader._attempt_resumes_or_redownloads",
+          "kind": "method",
+          "name": "_attempt_resumes_or_redownloads",
+          "parent": "pip._internal.network.download.Downloader",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/download.py",
+          "range": [
+            241,
+            304
+          ],
+          "lang": "python",
+          "signature": "(self, download: _FileDownload, first_resp: Response) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.session",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.session",
+          "kind": "module",
+          "name": "session",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            1,
+            534
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.session",
+          "kind": "module",
+          "name": "session",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            1,
+            553
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.session.PipSession",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.session.PipSession",
+          "kind": "class",
+          "name": "PipSession",
+          "parent": "pip._internal.network.session",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            323,
+            534
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.session.PipSession",
+          "kind": "class",
+          "name": "PipSession",
+          "parent": "pip._internal.network.session",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            329,
+            553
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.session.PipSession.__init__",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.session.PipSession.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.network.session.PipSession",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            326,
+            413
+          ],
+          "lang": "python",
+          "signature": "(self, *args, retries: int = 0, resume_retries: int = 0, cache: str | None = None, trusted_hosts: Sequence[str] = (), index_urls: list[str] | None = None, ssl_context: SSLContext | None = None, **kwargs) -> None"
+        },
+        "after": {
+          "id": "pip._internal.network.session.PipSession.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.network.session.PipSession",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            332,
+            421
+          ],
+          "lang": "python",
+          "signature": "(self, *args, retries: int = 0, resume_retries: int = 0, cache: str | None = None, trusted_hosts: Sequence[str] = (), index_urls: list[str] | None = None, ssl_context: SSLContext | None = None, **kwargs) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.session.PipSession.request",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.session.PipSession.request",
+          "kind": "method",
+          "name": "request",
+          "parent": "pip._internal.network.session.PipSession",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            527,
+            534
+          ],
+          "lang": "python",
+          "signature": "(self, method: str, url: str, *args, **kwargs) -> Response"
+        },
+        "after": {
+          "id": "pip._internal.network.session.PipSession.request",
+          "kind": "method",
+          "name": "request",
+          "parent": "pip._internal.network.session.PipSession",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/session.py",
+          "range": [
+            535,
+            553
+          ],
+          "lang": "python",
+          "signature": "(self, method: str, url: str, *args, **kwargs) -> Response"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.utils",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.network.utils",
+          "kind": "module",
+          "name": "utils",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/utils.py",
+          "range": [
+            1,
+            98
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.network.utils",
+          "kind": "module",
+          "name": "utils",
+          "parent": null,
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/utils.py",
+          "range": [
+            1,
+            206
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.network.utils.TimeoutValue",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.network.utils.TimeoutValue",
+          "kind": "field",
+          "name": "TimeoutValue",
+          "parent": "pip._internal.network.utils",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/utils.py",
+          "range": [
+            18,
+            20
+          ],
+          "lang": "python",
+          "signature": "TypeAlias"
+        }
+      },
+      {
+        "id": "pip._internal.network.utils._parse_timeout",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.network.utils._parse_timeout",
+          "kind": "function",
+          "name": "_parse_timeout",
+          "parent": "pip._internal.network.utils",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/utils.py",
+          "range": [
+            116,
+            135
+          ],
+          "lang": "python",
+          "signature": "(timeout: TimeoutValue, kind: Literal['connect', 'read']) -> float"
+        }
+      },
+      {
+        "id": "pip._internal.network.utils._raise_timeout_error",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.network.utils._raise_timeout_error",
+          "kind": "function",
+          "name": "_raise_timeout_error",
+          "parent": "pip._internal.network.utils",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/utils.py",
+          "range": [
+            138,
+            151
+          ],
+          "lang": "python",
+          "signature": "(reason: urllib3.exceptions.TimeoutError, url: str, host: str, timeout: TimeoutValue) -> NoReturn"
+        }
+      },
+      {
+        "id": "pip._internal.network.utils.raise_connection_error",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.network.utils.raise_connection_error",
+          "kind": "function",
+          "name": "raise_connection_error",
+          "parent": "pip._internal.network.utils",
+          "package": "pip._internal.network",
+          "file": "pip/_internal/network/utils.py",
+          "range": [
+            154,
+            206
+          ],
+          "lang": "python",
+          "signature": "(error: requests.ConnectionError | requests.Timeout, *, url: str, timeout: TimeoutValue) -> NoReturn"
+        }
+      },
+      {
+        "id": "pip._internal.operations.install.wheel",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.operations.install.wheel",
+          "kind": "module",
+          "name": "wheel",
+          "parent": null,
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/wheel.py",
+          "range": [
+            1,
+            754
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.operations.install.wheel",
+          "kind": "module",
+          "name": "wheel",
+          "parent": null,
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/wheel.py",
+          "range": [
+            1,
+            764
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.install.wheel._install_wheel",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.operations.install.wheel._install_wheel",
+          "kind": "function",
+          "name": "_install_wheel",
+          "parent": "pip._internal.operations.install.wheel",
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/wheel.py",
+          "range": [
+            435,
+            721
+          ],
+          "lang": "python",
+          "signature": "(name: str, wheel_zip: ZipFile, wheel_path: str, scheme: Scheme, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False) -> None"
+        },
+        "after": {
+          "id": "pip._internal.operations.install.wheel._install_wheel",
+          "kind": "function",
+          "name": "_install_wheel",
+          "parent": "pip._internal.operations.install.wheel",
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/wheel.py",
+          "range": [
+            435,
+            729
+          ],
+          "lang": "python",
+          "signature": "(name: str, wheel_zip: ZipFile, wheel_path: str, scheme: Scheme, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False, script_executable: str | None = None) -> None"
+        },
+        "fields": [
+          "signature"
+        ],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.install.wheel.install_wheel",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.operations.install.wheel.install_wheel",
+          "kind": "function",
+          "name": "install_wheel",
+          "parent": "pip._internal.operations.install.wheel",
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/wheel.py",
+          "range": [
+            733,
+            754
+          ],
+          "lang": "python",
+          "signature": "(name: str, wheel_path: str, scheme: Scheme, req_description: str, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False) -> None"
+        },
+        "after": {
+          "id": "pip._internal.operations.install.wheel.install_wheel",
+          "kind": "function",
+          "name": "install_wheel",
+          "parent": "pip._internal.operations.install.wheel",
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/wheel.py",
+          "range": [
+            741,
+            764
+          ],
+          "lang": "python",
+          "signature": "(name: str, wheel_path: str, scheme: Scheme, req_description: str, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False, script_executable: str | None = None) -> None"
+        },
+        "fields": [
+          "signature"
+        ],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.prepare",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.operations.prepare",
+          "kind": "module",
+          "name": "prepare",
+          "parent": null,
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            1,
+            751
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.operations.prepare",
+          "kind": "module",
+          "name": "prepare",
+          "parent": null,
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            1,
+            888
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.prepare.RequirementPreparer",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.operations.prepare.RequirementPreparer",
+          "kind": "class",
+          "name": "RequirementPreparer",
+          "parent": "pip._internal.operations.prepare",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            225,
+            751
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.operations.prepare.RequirementPreparer",
+          "kind": "class",
+          "name": "RequirementPreparer",
+          "parent": "pip._internal.operations.prepare",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            341,
+            888
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.prepare.RequirementPreparer._prepare_linked_requirement",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.operations.prepare.RequirementPreparer._prepare_linked_requirement",
+          "kind": "method",
+          "name": "_prepare_linked_requirement",
+          "parent": "pip._internal.operations.prepare.RequirementPreparer",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            574,
+            668
+          ],
+          "lang": "python",
+          "signature": "(self, req: InstallRequirement, parallel_builds: bool) -> BaseDistribution"
+        },
+        "after": {
+          "id": "pip._internal.operations.prepare.RequirementPreparer._prepare_linked_requirement",
+          "kind": "method",
+          "name": "_prepare_linked_requirement",
+          "parent": "pip._internal.operations.prepare.RequirementPreparer",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            690,
+            805
+          ],
+          "lang": "python",
+          "signature": "(self, req: InstallRequirement, parallel_builds: bool) -> BaseDistribution"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.prepare._canonical_requires",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.operations.prepare._canonical_requires",
+          "kind": "function",
+          "name": "_canonical_requires",
+          "parent": "pip._internal.operations.prepare",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            256,
+            273
+          ],
+          "lang": "python",
+          "signature": "(req: InstallRequirement, dist: BaseDistribution, source: str) -> frozenset[str]"
+        }
+      },
+      {
+        "id": "pip._internal.operations.prepare._canonicalize_requirement",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.operations.prepare._canonicalize_requirement",
+          "kind": "function",
+          "name": "_canonicalize_requirement",
+          "parent": "pip._internal.operations.prepare",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            229,
+            253
+          ],
+          "lang": "python",
+          "signature": "(raw: str) -> str"
+        }
+      },
+      {
+        "id": "pip._internal.operations.prepare._check_sidecar_matches_wheel",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.operations.prepare._check_sidecar_matches_wheel",
+          "kind": "function",
+          "name": "_check_sidecar_matches_wheel",
+          "parent": "pip._internal.operations.prepare",
+          "package": "pip._internal.operations",
+          "file": "pip/_internal/operations/prepare.py",
+          "range": [
+            276,
+            338
+          ],
+          "lang": "python",
+          "signature": "(req: InstallRequirement, sidecar_dist: BaseDistribution, wheel_dist: BaseDistribution) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.req",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req",
+          "kind": "module",
+          "name": "req",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/__init__.py",
+          "range": [
+            1,
+            103
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.req",
+          "kind": "module",
+          "name": "req",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/__init__.py",
+          "range": [
+            1,
+            105
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.install_given_reqs",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.install_given_reqs",
+          "kind": "function",
+          "name": "install_given_reqs",
+          "parent": "pip._internal.req",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/__init__.py",
+          "range": [
+            38,
+            103
+          ],
+          "lang": "python",
+          "signature": "(requirements: list[InstallRequirement], root: str | None, home: str | None, prefix: str | None, warn_script_location: bool, use_user_site: bool, pycompile: bool, progress_bar: BarType) -> list[InstallationResult]"
+        },
+        "after": {
+          "id": "pip._internal.req.install_given_reqs",
+          "kind": "function",
+          "name": "install_given_reqs",
+          "parent": "pip._internal.req",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/__init__.py",
+          "range": [
+            38,
+            105
+          ],
+          "lang": "python",
+          "signature": "(requirements: list[InstallRequirement], root: str | None, home: str | None, prefix: str | None, warn_script_location: bool, use_user_site: bool, pycompile: bool, progress_bar: BarType, script_executable: str | None = None) -> list[InstallationResult]"
+        },
+        "fields": [
+          "signature"
+        ],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_file",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_file",
+          "kind": "module",
+          "name": "req_file",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_file.py",
+          "range": [
+            1,
+            621
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.req.req_file",
+          "kind": "module",
+          "name": "req_file",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_file.py",
+          "range": [
+            1,
+            619
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install",
+          "kind": "module",
+          "name": "req_install",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            1,
+            844
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install",
+          "kind": "module",
+          "name": "req_install",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            1,
+            858
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install.InstallRequirement",
+          "kind": "class",
+          "name": "InstallRequirement",
+          "parent": "pip._internal.req.req_install",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            61,
+            807
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement",
+          "kind": "class",
+          "name": "InstallRequirement",
+          "parent": "pip._internal.req.req_install",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            61,
+            821
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement.__init__",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install.InstallRequirement.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            68,
+            188
+          ],
+          "lang": "python",
+          "signature": "(self, req: Requirement | None, comes_from: str | InstallRequirement | None, editable: bool = False, link: Link | None = None, markers: Marker | None = None, isolated: bool = False, *, hash_options: dict[str, list[str]] | None = None, config_settings: dict[str, str | list[str]] | None = None, constraint: bool = False, extras: Collection[str] = (), user_supplied: bool = False, permit_editable_wheels: bool = False, locked_link: Link | None = None, locked_version: Version | None = None) -> None"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement.__init__",
+          "kind": "method",
+          "name": "__init__",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            68,
+            190
+          ],
+          "lang": "python",
+          "signature": "(self, req: Requirement | None, comes_from: str | InstallRequirement | None, editable: bool = False, link: Link | None = None, markers: Marker | None = None, isolated: bool = False, *, hash_options: dict[str, list[str]] | None = None, config_settings: dict[str, str | list[str]] | None = None, constraint: bool = False, extras: Collection[str] = (), user_supplied: bool = False, permit_editable_wheels: bool = False, locked_link: Link | None = None, locked_version: Version | None = None) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement.configure_backend",
+        "change": "added",
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement.configure_backend",
+          "kind": "method",
+          "name": "configure_backend",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            503,
+            515
+          ],
+          "lang": "python",
+          "signature": "(self, python_executable: str) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement.install",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install.InstallRequirement.install",
+          "kind": "method",
+          "name": "install",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            768,
+            807
+          ],
+          "lang": "python",
+          "signature": "(self, root: str | None = None, home: str | None = None, prefix: str | None = None, warn_script_location: bool = True, use_user_site: bool = False, pycompile: bool = True) -> None"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement.install",
+          "kind": "method",
+          "name": "install",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            780,
+            821
+          ],
+          "lang": "python",
+          "signature": "(self, root: str | None = None, home: str | None = None, prefix: str | None = None, warn_script_location: bool = True, use_user_site: bool = False, pycompile: bool = True, script_executable: str | None = None) -> None"
+        },
+        "fields": [
+          "signature"
+        ],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement.load_pyproject_toml",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install.InstallRequirement.load_pyproject_toml",
+          "kind": "method",
+          "name": "load_pyproject_toml",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            485,
+            503
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement.load_pyproject_toml",
+          "kind": "method",
+          "name": "load_pyproject_toml",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            487,
+            501
+          ],
+          "lang": "python",
+          "signature": "(self) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.utils.pylock",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.utils.pylock",
+          "kind": "module",
+          "name": "pylock",
+          "parent": null,
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/pylock.py",
+          "range": [
+            1,
+            283
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.utils.pylock",
+          "kind": "module",
+          "name": "pylock",
+          "parent": null,
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/pylock.py",
+          "range": [
+            1,
+            297
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.utils.pylock._package_dist_url",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.utils.pylock._package_dist_url",
+          "kind": "function",
+          "name": "_package_dist_url",
+          "parent": "pip._internal.utils.pylock",
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/pylock.py",
+          "range": [
+            147,
+            174
+          ],
+          "lang": "python",
+          "signature": "(pylock_path_or_url: str, path: str | None, url: str | None) -> str"
+        },
+        "after": {
+          "id": "pip._internal.utils.pylock._package_dist_url",
+          "kind": "function",
+          "name": "_package_dist_url",
+          "parent": "pip._internal.utils.pylock",
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/pylock.py",
+          "range": [
+            147,
+            186
+          ],
+          "lang": "python",
+          "signature": "(pylock_path_or_url: str, path: str | None, url: str | None) -> str"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.utils.pylock.select_from_pylock_path_or_url",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.utils.pylock.select_from_pylock_path_or_url",
+          "kind": "function",
+          "name": "select_from_pylock_path_or_url",
+          "parent": "pip._internal.utils.pylock",
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/pylock.py",
+          "range": [
+            255,
+            283
+          ],
+          "lang": "python",
+          "signature": "(pylock_path_or_url: str, session: PipSession) -> Iterator[tuple[Package, PackageVcs | PackageDirectory | PackageArchive | PackageWheel | PackageSdist]]"
+        },
+        "after": {
+          "id": "pip._internal.utils.pylock.select_from_pylock_path_or_url",
+          "kind": "function",
+          "name": "select_from_pylock_path_or_url",
+          "parent": "pip._internal.utils.pylock",
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/pylock.py",
+          "range": [
+            267,
+            297
+          ],
+          "lang": "python",
+          "signature": "(pylock_path_or_url: str, session: PipSession) -> Iterator[tuple[Package, PackageVcs | PackageDirectory | PackageArchive | PackageWheel | PackageSdist]]"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.vcs.git",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.vcs.git",
+          "kind": "module",
+          "name": "git",
+          "parent": null,
+          "package": "pip._internal.vcs",
+          "file": "pip/_internal/vcs/git.py",
+          "range": [
+            1,
+            572
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.vcs.git",
+          "kind": "module",
+          "name": "git",
+          "parent": null,
+          "package": "pip._internal.vcs",
+          "file": "pip/_internal/vcs/git.py",
+          "range": [
+            1,
+            574
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.vcs.git.Git",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.vcs.git.Git",
+          "kind": "class",
+          "name": "Git",
+          "parent": "pip._internal.vcs.git",
+          "package": "pip._internal.vcs",
+          "file": "pip/_internal/vcs/git.py",
+          "range": [
+            61,
+            569
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.vcs.git.Git",
+          "kind": "class",
+          "name": "Git",
+          "parent": "pip._internal.vcs.git",
+          "package": "pip._internal.vcs",
+          "file": "pip/_internal/vcs/git.py",
+          "range": [
+            61,
+            571
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.vcs.git.Git.fetch_new",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.vcs.git.Git.fetch_new",
+          "kind": "method",
+          "name": "fetch_new",
+          "parent": "pip._internal.vcs.git.Git",
+          "package": "pip._internal.vcs",
+          "file": "pip/_internal/vcs/git.py",
+          "range": [
+            272,
+            333
+          ],
+          "lang": "python",
+          "signature": "(self, dest: str, url: HiddenText, rev_options: RevOptions, verbosity: int) -> None"
+        },
+        "after": {
+          "id": "pip._internal.vcs.git.Git.fetch_new",
+          "kind": "method",
+          "name": "fetch_new",
+          "parent": "pip._internal.vcs.git.Git",
+          "package": "pip._internal.vcs",
+          "file": "pip/_internal/vcs/git.py",
+          "range": [
+            272,
+            335
+          ],
+          "lang": "python",
+          "signature": "(self, dest: str, url: HiddenText, rev_options: RevOptions, verbosity: int) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      }
+    ],
+    "edges": [
+      {
+        "edge": {
+          "from": "pip._internal.build_env.base.BuildEnvironment",
+          "to": "pip._internal.build_env.base.BuildEnvironment.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.base.BuildEnvironment",
+          "to": "pip._internal.build_env.base.BuildEnvironment.python_executable",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "to": "pip._internal.build_env.base.BuildEnvironment",
+          "kind": "implements"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "to": "pip._internal.build_env.venv.VenvBuildEnvironment.__enter__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "to": "pip._internal.build_env.venv.VenvBuildEnvironment.__exit__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "to": "pip._internal.build_env.venv.VenvBuildEnvironment.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "to": "pip._internal.build_env.venv.VenvBuildEnvironment.install_requirements",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv",
+          "to": "pip._internal.build_env.base",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv",
+          "to": "pip._internal.build_env.venv.VenvBuildEnvironment",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv",
+          "to": "pip._internal.build_env.venv._get_venv_path_from_sysconfig",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv",
+          "to": "pip._internal.exceptions",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv",
+          "to": "pip._internal.req.req_install",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env.venv",
+          "to": "pip._internal.utils.temp_dir",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.build_env",
+          "to": "pip._internal.build_env.venv",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.cli.cmdoptions",
+          "to": "pip._internal.cli.cmdoptions.no_proxy_env",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.distributions.sdist.SourceDistribution",
+          "to": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_env",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ConnectionFailedError",
+          "to": "pip._internal.exceptions.ConnectionFailedError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ConnectionFailedError",
+          "to": "pip._internal.exceptions.ConnectionFailedError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ConnectionFailedError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ConnectionTimeoutError",
+          "to": "pip._internal.exceptions.ConnectionTimeoutError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ConnectionTimeoutError",
+          "to": "pip._internal.exceptions.ConnectionTimeoutError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ConnectionTimeoutError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ProxyConnectionError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ProxyConnectionError",
+          "to": "pip._internal.exceptions.ProxyConnectionError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.ProxyConnectionError",
+          "to": "pip._internal.exceptions.ProxyConnectionError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SSLMissingError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SSLMissingError",
+          "to": "pip._internal.exceptions.SSLMissingError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SSLMissingError",
+          "to": "pip._internal.exceptions.SSLMissingError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SSLVerificationError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SSLVerificationError",
+          "to": "pip._internal.exceptions.SSLVerificationError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SSLVerificationError",
+          "to": "pip._internal.exceptions.SSLVerificationError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SidecarMetadataInconsistent",
+          "to": "pip._internal.exceptions.MetadataInconsistent",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.SidecarMetadataInconsistent",
+          "to": "pip._internal.exceptions.SidecarMetadataInconsistent.__str__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.VenvCreationError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.VenvCreationError",
+          "to": "pip._internal.exceptions.VenvCreationError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.VenvCreationError",
+          "to": "pip._internal.exceptions.VenvCreationError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.VenvImportError",
+          "to": "pip._internal.exceptions.DiagnosticPipError",
+          "kind": "extends"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.VenvImportError",
+          "to": "pip._internal.exceptions.VenvImportError.__init__",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions.VenvImportError",
+          "to": "pip._internal.exceptions.VenvImportError.reference",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.ConnectionFailedError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.ConnectionTimeoutError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.ProxyConnectionError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.SSLMissingError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.SSLVerificationError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.SidecarMetadataInconsistent",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.VenvCreationError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.exceptions",
+          "to": "pip._internal.exceptions.VenvImportError",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.index.package_finder.PackageFinder",
+          "to": "pip._internal.index.package_finder.PackageFinder.no_proxy_env",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.auth.KeyRingCliProvider",
+          "to": "pip._internal.network.auth.KeyRingCliProvider._get_creds",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.auth.KeyRingCliProvider",
+          "to": "pip._internal.network.auth.KeyRingCliProvider._get_password",
+          "kind": "contains"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.session",
+          "to": "pip._internal.exceptions",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.session",
+          "to": "pip._internal.network.utils",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.utils",
+          "to": "pip._internal.network.utils.TimeoutValue",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.utils",
+          "to": "pip._internal.network.utils._parse_timeout",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.utils",
+          "to": "pip._internal.network.utils._raise_timeout_error",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.utils",
+          "to": "pip._internal.network.utils.raise_connection_error",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.network.utils",
+          "to": "pip._internal.utils.misc",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.prepare",
+          "to": "pip._internal.operations.prepare._canonical_requires",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.prepare",
+          "to": "pip._internal.operations.prepare._canonicalize_requirement",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.prepare",
+          "to": "pip._internal.operations.prepare._check_sidecar_matches_wheel",
+          "kind": "contains"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.prepare",
+          "to": "pip._internal.utils.packaging",
+          "kind": "imports"
+        },
+        "change": "added"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.req.req_install.InstallRequirement",
+          "to": "pip._internal.req.req_install.InstallRequirement.configure_backend",
+          "kind": "contains"
+        },
+        "change": "added"
+      }
+    ]
+  },
+  "signals": [
+    {
+      "kind": "new-implementation",
+      "elementId": "pip._internal.build_env.venv.VenvBuildEnvironment",
+      "relatedId": "pip._internal.build_env.base.BuildEnvironment",
+      "detail": "VenvBuildEnvironment now implements BuildEnvironment"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.build_env.base.BuildEnvironment.__init__",
+      "relatedId": "pip._internal.build_env.base.BuildEnvironment",
+      "detail": "__init__ added to existing BuildEnvironment"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.build_env.base.BuildEnvironment.python_executable",
+      "relatedId": "pip._internal.build_env.base.BuildEnvironment",
+      "detail": "python_executable added to existing BuildEnvironment"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.cli.cmdoptions.no_proxy_env",
+      "relatedId": "pip._internal.cli.cmdoptions",
+      "detail": "no_proxy_env added to existing cmdoptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_env",
+      "relatedId": "pip._internal.distributions.sdist.SourceDistribution",
+      "detail": "_prepare_build_env added to existing SourceDistribution"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.ConnectionFailedError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "ConnectionFailedError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.ConnectionTimeoutError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "ConnectionTimeoutError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.ProxyConnectionError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "ProxyConnectionError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.SSLMissingError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "SSLMissingError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.SSLVerificationError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "SSLVerificationError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.SidecarMetadataInconsistent",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "SidecarMetadataInconsistent added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.VenvCreationError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "VenvCreationError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.exceptions.VenvImportError",
+      "relatedId": "pip._internal.exceptions",
+      "detail": "VenvImportError added to existing exceptions"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.index.package_finder.PackageFinder.no_proxy_env",
+      "relatedId": "pip._internal.index.package_finder.PackageFinder",
+      "detail": "no_proxy_env added to existing PackageFinder"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.network.auth.KeyRingCliProvider._get_creds",
+      "relatedId": "pip._internal.network.auth.KeyRingCliProvider",
+      "detail": "_get_creds added to existing KeyRingCliProvider"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.network.utils.TimeoutValue",
+      "relatedId": "pip._internal.network.utils",
+      "detail": "TimeoutValue added to existing utils"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.network.utils._parse_timeout",
+      "relatedId": "pip._internal.network.utils",
+      "detail": "_parse_timeout added to existing utils"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.network.utils._raise_timeout_error",
+      "relatedId": "pip._internal.network.utils",
+      "detail": "_raise_timeout_error added to existing utils"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.network.utils.raise_connection_error",
+      "relatedId": "pip._internal.network.utils",
+      "detail": "raise_connection_error added to existing utils"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.operations.prepare._canonical_requires",
+      "relatedId": "pip._internal.operations.prepare",
+      "detail": "_canonical_requires added to existing prepare"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.operations.prepare._canonicalize_requirement",
+      "relatedId": "pip._internal.operations.prepare",
+      "detail": "_canonicalize_requirement added to existing prepare"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.operations.prepare._check_sidecar_matches_wheel",
+      "relatedId": "pip._internal.operations.prepare",
+      "detail": "_check_sidecar_matches_wheel added to existing prepare"
+    },
+    {
+      "kind": "new-member",
+      "elementId": "pip._internal.req.req_install.InstallRequirement.configure_backend",
+      "relatedId": "pip._internal.req.req_install.InstallRequirement",
+      "detail": "configure_backend added to existing InstallRequirement"
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.build_env.base.BuildEnvironment.__init__",
+      "relatedId": "pip._internal.build_env.base.BuildEnvironment",
+      "detail": "New method alongside 2 existing in pip._internal.build_env.base.BuildEnvironment",
+      "peerCount": 2
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.build_env.base.BuildEnvironment.python_executable",
+      "relatedId": "pip._internal.build_env.base.BuildEnvironment",
+      "detail": "New field alongside 1 existing in pip._internal.build_env.base.BuildEnvironment",
+      "peerCount": 1
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.build_env.venv",
+      "relatedId": "pip._internal.build_env",
+      "detail": "New module alongside 5 existing in pip._internal.build_env",
+      "peerCount": 5
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.build_env.venv.VenvBuildEnvironment",
+      "relatedId": "pip._internal.build_env",
+      "detail": "New class alongside 5 existing in pip._internal.build_env",
+      "peerCount": 5
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.build_env.venv._get_venv_path_from_sysconfig",
+      "relatedId": "pip._internal.build_env",
+      "detail": "New function alongside 2 existing in pip._internal.build_env",
+      "peerCount": 2
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.cli.cmdoptions.no_proxy_env",
+      "relatedId": "pip._internal.cli.cmdoptions",
+      "detail": "New field alongside 50+ existing in pip._internal.cli.cmdoptions",
+      "peerCount": 53
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_env",
+      "relatedId": "pip._internal.distributions.sdist.SourceDistribution",
+      "detail": "New method alongside 9 existing in pip._internal.distributions.sdist.SourceDistribution",
+      "peerCount": 9
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.ConnectionFailedError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.ConnectionTimeoutError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.ProxyConnectionError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.SSLMissingError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.SSLVerificationError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.SidecarMetadataInconsistent",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.VenvCreationError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.exceptions.VenvImportError",
+      "relatedId": "pip._internal",
+      "detail": "New class alongside 50+ existing in pip._internal",
+      "peerCount": 50
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.index.package_finder.PackageFinder.no_proxy_env",
+      "relatedId": "pip._internal.index.package_finder.PackageFinder",
+      "detail": "New method alongside 20+ existing in pip._internal.index.package_finder.PackageFinder",
+      "peerCount": 27
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.network.auth.KeyRingCliProvider._get_creds",
+      "relatedId": "pip._internal.network.auth.KeyRingCliProvider",
+      "detail": "New method alongside 5 existing in pip._internal.network.auth.KeyRingCliProvider",
+      "peerCount": 5
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.network.utils.TimeoutValue",
+      "relatedId": "pip._internal.network.utils",
+      "detail": "New field alongside 2 existing in pip._internal.network.utils",
+      "peerCount": 2
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.network.utils._parse_timeout",
+      "relatedId": "pip._internal.network",
+      "detail": "New function alongside 14 existing in pip._internal.network",
+      "peerCount": 14
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.network.utils._raise_timeout_error",
+      "relatedId": "pip._internal.network",
+      "detail": "New function alongside 14 existing in pip._internal.network",
+      "peerCount": 14
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.network.utils.raise_connection_error",
+      "relatedId": "pip._internal.network",
+      "detail": "New function alongside 14 existing in pip._internal.network",
+      "peerCount": 14
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.operations.prepare._canonical_requires",
+      "relatedId": "pip._internal.operations",
+      "detail": "New function alongside 15 existing in pip._internal.operations",
+      "peerCount": 15
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.operations.prepare._canonicalize_requirement",
+      "relatedId": "pip._internal.operations",
+      "detail": "New function alongside 15 existing in pip._internal.operations",
+      "peerCount": 15
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.operations.prepare._check_sidecar_matches_wheel",
+      "relatedId": "pip._internal.operations",
+      "detail": "New function alongside 15 existing in pip._internal.operations",
+      "peerCount": 15
+    },
+    {
+      "kind": "new-peer",
+      "elementId": "pip._internal.req.req_install.InstallRequirement.configure_backend",
+      "relatedId": "pip._internal.req.req_install.InstallRequirement",
+      "detail": "New method alongside 30+ existing in pip._internal.req.req_install.InstallRequirement",
+      "peerCount": 37
+    },
+    {
+      "kind": "signature-changed",
+      "elementId": "pip._internal.build_env.base.Prefix.__init__",
+      "detail": "Signature changed: (self, path: str) -> None -> (self, path: str, *, venv_executable: str | None = None) -> None"
+    },
+    {
+      "kind": "signature-changed",
+      "elementId": "pip._internal.distributions.sdist.SourceDistribution._prepare_build_backend",
+      "detail": "Signature changed: (self, build_isolation: BuildIsolationMode, build_env_installer: BuildEnvironmentInstaller) -> None -> (self) -> None"
+    },
+    {
+      "kind": "signature-changed",
+      "elementId": "pip._internal.operations.install.wheel._install_wheel",
+      "detail": "Signature changed: (name: str, wheel_zip: ZipFile, wheel_path: str, scheme: Scheme, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False) -> None -> (name: str, wheel_zip: ZipFile, wheel_path: str, scheme: Scheme, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False, script_executable: str | None = None) -> None"
+    },
+    {
+      "kind": "signature-changed",
+      "elementId": "pip._internal.operations.install.wheel.install_wheel",
+      "detail": "Signature changed: (name: str, wheel_path: str, scheme: Scheme, req_description: str, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False) -> None -> (name: str, wheel_path: str, scheme: Scheme, req_description: str, pycompile: bool = True, warn_script_location: bool = True, direct_url: DirectUrl | None = None, requested: bool = False, script_executable: str | None = None) -> None"
+    },
+    {
+      "kind": "signature-changed",
+      "elementId": "pip._internal.req.install_given_reqs",
+      "detail": "Signature changed: (requirements: list[InstallRequirement], root: str | None, home: str | None, prefix: str | None, warn_script_location: bool, use_user_site: bool, pycompile: bool, progress_bar: BarType) -> list[InstallationResult] -> (requirements: list[InstallRequirement], root: str | None, home: str | None, prefix: str | None, warn_script_location: bool, use_user_site: bool, pycompile: bool, progress_bar: BarType, script_executable: str | None = None) -> list[InstallationResult]"
+    },
+    {
+      "kind": "signature-changed",
+      "elementId": "pip._internal.req.req_install.InstallRequirement.install",
+      "detail": "Signature changed: (self, root: str | None = None, home: str | None = None, prefix: str | None = None, warn_script_location: bool = True, use_user_site: bool = False, pycompile: bool = True) -> None -> (self, root: str | None = None, home: str | None = None, prefix: str | None = None, warn_script_location: bool = True, use_user_site: bool = False, pycompile: bool = True, script_executable: str | None = None) -> None"
+    }
+  ],
+  "source": {
+    "repoRoot": "/repos/pip",
+    "subdir": "src",
+    "base": {
+      "ref": "bfaabbcc0f302443f25b61b751deea068385acb9",
+      "modelPath": "/cache/base.model.json"
+    },
+    "head": {
+      "ref": "f451950e675a1305bd2f523598d1f6474541721b",
+      "modelPath": "/cache/head.model.json"
+    },
+    "capabilities": {
+      "documentSymbol": true,
+      "definition": true,
+      "references": true,
+      "workspaceSymbol": true,
+      "callHierarchy": true
+    }
+  }
+}

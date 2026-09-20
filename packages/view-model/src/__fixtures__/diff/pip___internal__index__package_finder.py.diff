@@ -1,0 +1,15 @@
+diff --git a/pip/_internal/index/package_finder.py b/pip/_internal/index/package_finder.py
+index 6c45d12fd..68125ec8c 100644
+--- a/pip/_internal/index/package_finder.py
++++ b/pip/_internal/index/package_finder.py
+@@ -726,6 +726,10 @@ class PackageFinder:
+     def proxy(self) -> str | None:
+         return self._link_collector.session.pip_proxy
+ 
++    @property
++    def no_proxy_env(self) -> bool:
++        return self._link_collector.session.pip_no_proxy_env
++
+     @property
+     def trusted_hosts(self) -> Iterable[str]:
+         for host_port in self._link_collector.session.pip_trusted_origins:

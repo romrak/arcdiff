@@ -1,0 +1,19 @@
+arcdiff
+Copyright (c) 2026 Roman Rakus
+
+This product includes material derived from pip (https://github.com/pypa/pip),
+which is distributed under the MIT License:
+
+    Copyright (c) 2008-present The pip developers
+    (see https://github.com/pypa/pip/blob/main/AUTHORS.txt)
+
+Specifically, the test fixtures under
+`packages/view-model/src/__fixtures__/` contain:
+
+  - pruned structural models (module, class and method names with line ranges)
+    extracted from pip at the commits named in each fixture's `delta.json`, and
+  - `git diff` output for the files those commits touch, which includes
+    verbatim excerpts of pip's source.
+
+pip's full licence text is available at
+https://github.com/pypa/pip/blob/main/LICENSE.txt

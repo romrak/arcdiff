@@ -1,0 +1,20 @@
+diff --git a/pip/_internal/metadata/base.py b/pip/_internal/metadata/base.py
+index adb300bfc..76fb96365 100644
+--- a/pip/_internal/metadata/base.py
++++ b/pip/_internal/metadata/base.py
+@@ -158,14 +158,13 @@ class BaseDistribution(Protocol):
+         """
+         raise NotImplementedError()
+ 
+-    @property
++    @functools.cached_property
+     def editable_project_location(self) -> str | None:
+         """The project location for editable distributions.
+ 
+         This is the directory where pyproject.toml or setup.py is located.
+         None if the distribution is not installed in editable mode.
+         """
+-        # TODO: this property is relatively costly to compute, memoize it ?
+         direct_url = self.direct_url
+         if direct_url:
+             if direct_url.is_local_editable():

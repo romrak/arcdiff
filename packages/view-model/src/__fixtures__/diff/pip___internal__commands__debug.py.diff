@@ -1,0 +1,13 @@
+diff --git a/pip/_internal/commands/debug.py b/pip/_internal/commands/debug.py
+index 7d5f9039c..4e8178d0a 100644
+--- a/pip/_internal/commands/debug.py
++++ b/pip/_internal/commands/debug.py
+@@ -133,7 +133,7 @@ def show_tags(options: Values) -> None:
+ 
+ 
+ def ca_bundle_info(config: Configuration) -> str:
+-    levels = {key.split(".", 1)[0] for key, _ in config.items()}
++    levels = {key.split(".", 1)[0] for _, options in config.items() for key in options}
+     if not levels:
+         return "Not specified"
+ 

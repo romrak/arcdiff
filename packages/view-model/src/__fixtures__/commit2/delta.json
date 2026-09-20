@@ -1,0 +1,512 @@
+{
+  "delta": {
+    "base": "0a0c8780de9f890ddcb02e7863f0337382784586",
+    "head": "f9366da68104af1b102dbaa69e0673e84bfb0175",
+    "elements": [
+      {
+        "id": "pip._internal.commands.install",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.install",
+          "kind": "module",
+          "name": "install",
+          "parent": null,
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/install.py",
+          "range": [
+            1,
+            807
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.commands.install",
+          "kind": "module",
+          "name": "install",
+          "parent": null,
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/install.py",
+          "range": [
+            1,
+            805
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.install.InstallCommand",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.install.InstallCommand",
+          "kind": "class",
+          "name": "InstallCommand",
+          "parent": "pip._internal.commands.install",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/install.py",
+          "range": [
+            67,
+            653
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.commands.install.InstallCommand",
+          "kind": "class",
+          "name": "InstallCommand",
+          "parent": "pip._internal.commands.install",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/install.py",
+          "range": [
+            67,
+            651
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.commands.install.InstallCommand.run",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.commands.install.InstallCommand.run",
+          "kind": "method",
+          "name": "run",
+          "parent": "pip._internal.commands.install.InstallCommand",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/install.py",
+          "range": [
+            282,
+            537
+          ],
+          "lang": "python",
+          "signature": "(self, options: Values, args: list[str]) -> int",
+          "decoratorStart": 281
+        },
+        "after": {
+          "id": "pip._internal.commands.install.InstallCommand.run",
+          "kind": "method",
+          "name": "run",
+          "parent": "pip._internal.commands.install.InstallCommand",
+          "package": "pip._internal.commands",
+          "file": "pip/_internal/commands/install.py",
+          "range": [
+            282,
+            535
+          ],
+          "lang": "python",
+          "signature": "(self, options: Values, args: list[str]) -> int",
+          "decoratorStart": 281
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.operations.install.editable_legacy",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.operations.install.editable_legacy",
+          "kind": "module",
+          "name": "editable_legacy",
+          "parent": null,
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/editable_legacy.py",
+          "range": [
+            1,
+            48
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.operations.install.editable_legacy.install_editable",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.operations.install.editable_legacy.install_editable",
+          "kind": "function",
+          "name": "install_editable",
+          "parent": "pip._internal.operations.install.editable_legacy",
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/editable_legacy.py",
+          "range": [
+            16,
+            48
+          ],
+          "lang": "python",
+          "signature": "(*, global_options: Sequence[str], prefix: str | None, home: str | None, use_user_site: bool, name: str, setup_py_path: str, isolated: bool, build_env: BuildEnvironment, unpacked_source_directory: str) -> None"
+        }
+      },
+      {
+        "id": "pip._internal.operations.install.editable_legacy.logger",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.operations.install.editable_legacy.logger",
+          "kind": "field",
+          "name": "logger",
+          "parent": "pip._internal.operations.install.editable_legacy",
+          "package": "pip._internal.operations.install",
+          "file": "pip/_internal/operations/install/editable_legacy.py",
+          "range": [
+            13,
+            13
+          ],
+          "lang": "python"
+        }
+      },
+      {
+        "id": "pip._internal.req.req_install",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install",
+          "kind": "module",
+          "name": "req_install",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            1,
+            946
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install",
+          "kind": "module",
+          "name": "req_install",
+          "parent": null,
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            1,
+            906
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install.InstallRequirement",
+          "kind": "class",
+          "name": "InstallRequirement",
+          "parent": "pip._internal.req.req_install",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            68,
+            889
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement",
+          "kind": "class",
+          "name": "InstallRequirement",
+          "parent": "pip._internal.req.req_install",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            65,
+            849
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.req.req_install.InstallRequirement.install",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.req.req_install.InstallRequirement.install",
+          "kind": "method",
+          "name": "install",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            819,
+            889
+          ],
+          "lang": "python",
+          "signature": "(self, global_options: Sequence[str] | None = None, root: str | None = None, home: str | None = None, prefix: str | None = None, warn_script_location: bool = True, use_user_site: bool = False, pycompile: bool = True) -> None"
+        },
+        "after": {
+          "id": "pip._internal.req.req_install.InstallRequirement.install",
+          "kind": "method",
+          "name": "install",
+          "parent": "pip._internal.req.req_install.InstallRequirement",
+          "package": "pip._internal.req",
+          "file": "pip/_internal/req/req_install.py",
+          "range": [
+            816,
+            849
+          ],
+          "lang": "python",
+          "signature": "(self, global_options: Sequence[str] | None = None, root: str | None = None, home: str | None = None, prefix: str | None = None, warn_script_location: bool = True, use_user_site: bool = False, pycompile: bool = True) -> None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.utils.setuptools_build",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.utils.setuptools_build",
+          "kind": "module",
+          "name": "setuptools_build",
+          "parent": null,
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/setuptools_build.py",
+          "range": [
+            1,
+            149
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.utils.setuptools_build",
+          "kind": "module",
+          "name": "setuptools_build",
+          "parent": null,
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/setuptools_build.py",
+          "range": [
+            1,
+            119
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.utils.setuptools_build.make_setuptools_develop_args",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.utils.setuptools_build.make_setuptools_develop_args",
+          "kind": "function",
+          "name": "make_setuptools_develop_args",
+          "parent": "pip._internal.utils.setuptools_build",
+          "package": "pip._internal.utils",
+          "file": "pip/_internal/utils/setuptools_build.py",
+          "range": [
+            107,
+            134
+          ],
+          "lang": "python",
+          "signature": "(setup_py_path: str, *, global_options: Sequence[str], no_user_config: bool, prefix: str | None, home: str | None, use_user_site: bool) -> list[str]"
+        }
+      },
+      {
+        "id": "pip._internal.wheel_builder",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.wheel_builder",
+          "kind": "module",
+          "name": "wheel_builder",
+          "parent": null,
+          "package": "pip._internal",
+          "file": "pip/_internal/wheel_builder.py",
+          "range": [
+            1,
+            337
+          ],
+          "lang": "python"
+        },
+        "after": {
+          "id": "pip._internal.wheel_builder",
+          "kind": "module",
+          "name": "wheel_builder",
+          "parent": null,
+          "package": "pip._internal",
+          "file": "pip/_internal/wheel_builder.py",
+          "range": [
+            1,
+            312
+          ],
+          "lang": "python"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.wheel_builder._should_build",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.wheel_builder._should_build",
+          "kind": "function",
+          "name": "_should_build",
+          "parent": "pip._internal.wheel_builder",
+          "package": "pip._internal",
+          "file": "pip/_internal/wheel_builder.py",
+          "range": [
+            45,
+            60
+          ],
+          "lang": "python",
+          "signature": "(req: InstallRequirement) -> bool"
+        }
+      },
+      {
+        "id": "pip._internal.wheel_builder._should_cache",
+        "change": "modified",
+        "before": {
+          "id": "pip._internal.wheel_builder._should_cache",
+          "kind": "function",
+          "name": "_should_cache",
+          "parent": "pip._internal.wheel_builder",
+          "package": "pip._internal",
+          "file": "pip/_internal/wheel_builder.py",
+          "range": [
+            69,
+            98
+          ],
+          "lang": "python",
+          "signature": "(req: InstallRequirement) -> bool | None"
+        },
+        "after": {
+          "id": "pip._internal.wheel_builder._should_cache",
+          "kind": "function",
+          "name": "_should_cache",
+          "parent": "pip._internal.wheel_builder",
+          "package": "pip._internal",
+          "file": "pip/_internal/wheel_builder.py",
+          "range": [
+            45,
+            73
+          ],
+          "lang": "python",
+          "signature": "(req: InstallRequirement) -> bool | None"
+        },
+        "fields": [],
+        "bodyChanged": true
+      },
+      {
+        "id": "pip._internal.wheel_builder.should_build_for_install_command",
+        "change": "removed",
+        "before": {
+          "id": "pip._internal.wheel_builder.should_build_for_install_command",
+          "kind": "function",
+          "name": "should_build_for_install_command",
+          "parent": "pip._internal.wheel_builder",
+          "package": "pip._internal",
+          "file": "pip/_internal/wheel_builder.py",
+          "range": [
+            63,
+            66
+          ],
+          "lang": "python",
+          "signature": "(req: InstallRequirement) -> bool"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "edge": {
+          "from": "pip._internal.operations.install.editable_legacy",
+          "to": "pip._internal.build_env",
+          "kind": "imports"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.install.editable_legacy",
+          "to": "pip._internal.operations.install.editable_legacy.install_editable",
+          "kind": "contains"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.install.editable_legacy",
+          "to": "pip._internal.operations.install.editable_legacy.logger",
+          "kind": "contains"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.install.editable_legacy",
+          "to": "pip._internal.utils.logging",
+          "kind": "imports"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.install.editable_legacy",
+          "to": "pip._internal.utils.setuptools_build",
+          "kind": "imports"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.operations.install.editable_legacy",
+          "to": "pip._internal.utils.subprocess",
+          "kind": "imports"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.req.req_install",
+          "to": "pip._internal.operations.install.editable_legacy",
+          "kind": "imports"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.utils.setuptools_build",
+          "to": "pip._internal.utils.setuptools_build.make_setuptools_develop_args",
+          "kind": "contains"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.wheel_builder",
+          "to": "pip._internal.wheel_builder._should_build",
+          "kind": "contains"
+        },
+        "change": "removed"
+      },
+      {
+        "edge": {
+          "from": "pip._internal.wheel_builder",
+          "to": "pip._internal.wheel_builder.should_build_for_install_command",
+          "kind": "contains"
+        },
+        "change": "removed"
+      }
+    ]
+  },
+  "signals": [],
+  "source": {
+    "repoRoot": "/repos/pip",
+    "subdir": "src",
+    "base": {
+      "ref": "0a0c8780de9f890ddcb02e7863f0337382784586",
+      "modelPath": "/cache/base.model.json"
+    },
+    "head": {
+      "ref": "f9366da68104af1b102dbaa69e0673e84bfb0175",
+      "modelPath": "/cache/head.model.json"
+    },
+    "capabilities": {
+      "documentSymbol": true,
+      "definition": true,
+      "references": true,
+      "workspaceSymbol": true,
+      "callHierarchy": true
+    }
+  }
+}
