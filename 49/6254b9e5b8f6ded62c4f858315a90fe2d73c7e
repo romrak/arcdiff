@@ -1,0 +1,23 @@
+README.md
+  s_3835612dc0b108::t_12efb3f9e27d01 186-187,210
+packages/cli/src/run.test.ts
+  s_3835612dc0b108::t_dd9f648384b153 425-426
+packages/git/src/index.ts
+  s_3835612dc0b108::t_de0541692a98c6 8-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "496254b9e5b8f6ded62c4f858315a90fe2d73c7e",
+  "prompts": {},
+  "sessions": {
+    "s_3835612dc0b108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "635e3b98-ba57-4aba-b8d2-76d24dde2635",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Rakus <12465624+romrak@users.noreply.github.com>"
+    }
+  }
+}
