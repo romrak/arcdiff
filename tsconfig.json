@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/model" },
+    { "path": "packages/diff" },
+    { "path": "packages/view-model" },
+    { "path": "packages/git" },
+    { "path": "packages/extract" },
+    { "path": "packages/server" },
+    { "path": "packages/cli" }
+  ]
+}
