@@ -1,0 +1,19 @@
+.gitignore
+  s_3835612dc0b108::t_e653452105d8dd 9-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ef34c4548566017fe97705a0501b1434550059e9",
+  "prompts": {},
+  "sessions": {
+    "s_3835612dc0b108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "635e3b98-ba57-4aba-b8d2-76d24dde2635",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Rakus <12465624+romrak@users.noreply.github.com>"
+    }
+  }
+}
