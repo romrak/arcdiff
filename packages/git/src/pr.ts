@@ -36,9 +36,16 @@ export interface PrInfo {
 
 export type PrLookup = (target: Project & { number: number }) => Promise<PrInfo>
 
-const PULL_URL = /^https?:\/\/(?:[^@/]*@)?(?:www\.)?([^/:]+)(?::\d+)?\/([^/]+)\/([^/]+)\/pull\/(\d+)(?:[/?#].*)?$/
+const PULL_URL =
+  /^https?:\/\/(?:[^@/]*@)?(?:www\.)?([^/:]+)(?::\d+)?\/([^/]+)\/([^/]+)\/pull\/(\d+)(?:[/?#].*)?$/i
 const OWNER_REPO_HASH = /^([A-Za-z0-9._-]+)\/([A-Za-z0-9._-]+)#(\d+)$/
+const GITHUB_HOST = 'github.com'
 const BARE_NUMBER = /^#?(\d+)$/
+
+/** `widgets.git` and `widgets` name the same repository to GitHub. */
+function stripDotGit(repo: string): string {
+  return repo.replace(/\.git$/i, '')
+}
 
 function prNumber(digits: string, input: string): number {
   const n = Number(digits)
@@ -69,21 +76,21 @@ export function parsePrRef(input: string): PrRef {
       )
     }
     const [, host, owner, repo, digits] = m
-    if (host!.toLowerCase() !== 'github.com') {
+    if (host!.toLowerCase() !== GITHUB_HOST) {
       throw new Error(
         `arcdiff: --pr understands github.com only, but '${s}' is on '${host}'. ` +
         'Pass --base and --head instead.',
       )
     }
-    return {
-      number: prNumber(digits!, s),
-      project: { owner: owner!, repo: repo!.replace(/\.git$/, '') },
-    }
+    return { number: prNumber(digits!, s), project: { owner: owner!, repo: stripDotGit(repo!) } }
   }
 
   const short = OWNER_REPO_HASH.exec(s)
   if (short !== null) {
-    return { number: prNumber(short[3]!, s), project: { owner: short[1]!, repo: short[2]! } }
+    return {
+      number: prNumber(short[3]!, s),
+      project: { owner: short[1]!, repo: stripDotGit(short[2]!) },
+    }
   }
 
   const bare = BARE_NUMBER.exec(s)
@@ -151,12 +158,16 @@ function ghError(e: unknown, target: string, number: number): Error {
 }
 
 /**
- * The default lookup: `gh pr view`. `-R owner/repo` is always explicit —
- * left to guess from the working directory, gh fails on a repo with two
- * remotes because the disambiguating prompt has no terminal to run in.
+ * The default lookup: `gh pr view`, with the repository named as
+ * `HOST/OWNER/REPO`. Both parts are load-bearing. Left to infer the project
+ * from a working directory, gh fails on a repo with two remotes, because the
+ * prompt that would disambiguate has no terminal. Left to infer the HOST, it
+ * takes it from GH_HOST or from arcdiff's own cwd — never from --repo — so a
+ * user with GH_HOST set to an enterprise host would have the pull request read
+ * from one server while the fetch pulled its head from another.
  */
 export const ghLookup: PrLookup = async ({ owner, repo, number }) => {
-  const target = `${owner}/${repo}`
+  const target = `${GITHUB_HOST}/${owner}/${repo}`
   let stdout: string
   try {
     ;({ stdout } = await run(
@@ -196,7 +207,13 @@ export interface ResolvedPr {
 }
 
 /**
- * `git config --get remote.<name>.url`, deliberately not `git remote get-url`:
+ * `git config --get-all remote.<name>.url`, first line. Not `--get`, which
+ * returns the LAST value of a multi-valued key while `git fetch` dials the
+ * FIRST — and `git remote set-url --add` is the ordinary way to end up with
+ * two. Reading the last one identifies the project from a mirror while
+ * fetching from the primary.
+ *
+ * Also deliberately not `git remote get-url`:
  * the latter applies `url.<base>.insteadOf` rewriting, so a user who mirrors
  * github.com through an internal host or a local path would have us identify
  * the repository from the mirror's address instead of its own. The configured
@@ -205,7 +222,10 @@ export interface ResolvedPr {
  */
 async function remoteUrlOf(repoRoot: string, remote: string): Promise<string> {
   try {
-    return (await gitStdout(repoRoot, ['config', '--get', `remote.${remote}.url`])).trim()
+    const out = await gitStdout(repoRoot, ['config', '--get-all', `remote.${remote}.url`])
+    const first = out.split('\n').map(l => l.trim()).find(l => l.length > 0)
+    if (first === undefined) throw new Error('no url')
+    return first
   } catch {
     // `git config --get` exits 1 for a missing key and for a repoRoot that is
     // no repository at all, so both are named rather than guessing at one.
@@ -250,6 +270,21 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
   const remoteUrl = await remoteUrlOf(o.repoRoot, remote)
   const local = parseRemoteUrl(remoteUrl)
 
+  // Checked before the project is settled, and for every spelling of --pr.
+  // Whatever names the project, the REMOTE decides which server holds it:
+  // the fetch goes there, so the lookup has to go there too. Checking this
+  // only on the bare-number path left `--pr acme/widgets#7` against a GitHub
+  // Enterprise remote reading github.com's acme/widgets#7 for the base branch
+  // while fetching the head from the enterprise host — two projects, one
+  // ordinary-looking diff. A remote spelled as a filesystem path names no
+  // host, and a pull request cannot come from one, so it is left alone.
+  if (local !== null && local.host.toLowerCase() !== GITHUB_HOST) {
+    throw new Error(
+      `arcdiff: the '${remote}' remote is on '${local.host}', not ${GITHUB_HOST}. ` +
+      '--pr understands GitHub only — pass --base and --head instead.',
+    )
+  }
+
   let project: Project
   if (ref.project !== undefined) {
     project = ref.project
@@ -259,9 +294,11 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
     if (local !== null && !sameProject(local, project)) {
       throw new Error(
         `arcdiff: --pr names ${project.owner}/${project.repo} but the '${remote}' ` +
-        `remote is ${local.owner}/${local.repo}. Point --repo at a clone of ` +
-        `${project.owner}/${project.repo}: pull request numbers are per-repository, ` +
-        'so resolving this one here would diff unrelated commits.',
+        `remote is ${local.owner}/${local.repo}. If this clone has another remote ` +
+        `for ${project.owner}/${project.repo} — the usual shape when you work from ` +
+        'a fork — pass --remote <name>. Otherwise point --repo at a clone of it: ' +
+        'pull request numbers are per-repository, so resolving this one here would ' +
+        'diff unrelated commits.',
       )
     }
   } else if (local === null) {
@@ -269,11 +306,6 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
       `arcdiff: --pr ${ref.number} is a bare number, and the '${remote}' remote ` +
       `(${remoteUrl}) names no owner/repo to resolve it against. Pass the full ` +
       'https://github.com/<owner>/<repo>/pull/<number> URL instead.',
-    )
-  } else if (local.host.toLowerCase() !== 'github.com') {
-    throw new Error(
-      `arcdiff: --pr ${ref.number} is a bare number, but the '${remote}' remote is ` +
-      `on '${local.host}', not github.com. --pr understands GitHub only.`,
     )
   } else {
     project = { owner: local.owner, repo: local.repo }
@@ -310,11 +342,13 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
   let baseSha: string
   try {
     baseSha = (await gitStdout(o.repoRoot, ['merge-base', baseRef, headSha])).trim()
-  } catch {
+  } catch (e) {
+    const detail = ((e as { stderr?: string }).stderr ?? (e as Error).message).trim()
     throw new Error(
       `arcdiff: no merge base between '${pr.baseRefName}' and pull request ` +
       `${pr.number} in ${o.repoRoot}. A shallow or single-branch clone is the ` +
-      'usual cause — run `git fetch --unshallow` and try again.',
+      'usual cause — run `git fetch --unshallow` and try again. git said: ' +
+      `${detail}`,
     )
   }
 

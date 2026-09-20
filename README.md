@@ -102,10 +102,16 @@ pypa/pip#13535                             https://github.com/pypa/pip/pull/1353
 https://github.com/pypa/pip/pull/13535/files
 ```
 
-A bare number is resolved against the `origin` remote; pass `--remote <name>` to use
-a different one. A URL that names a different repository than the remote is refused
-rather than resolved, because pull-request numbers are per-repository and the wrong
-one would diff a plausible-looking pair of unrelated commits.
+A bare number is resolved against the `origin` remote. **If you work from a fork**,
+the pull request lives on the upstream remote, so name it:
+
+```bash
+arcdiff serve --repo . --subdir src --remote upstream --pr 13535
+```
+
+A URL naming a different repository than the remote is refused rather than resolved,
+as is a remote on any host but github.com — pull-request numbers are per-repository,
+and either mismatch would diff a plausible-looking pair of unrelated commits.
 
 **The base is the merge base, not the base branch tip.** This is the whole reason
 the flag exists. The tip mixes the pull request with everything merged into the base
@@ -207,7 +213,7 @@ Stated plainly rather than discovered later.
 ## Development
 
 ```bash
-npm test                      # 391 unit and integration tests
+npm test                      # 395 unit and integration tests
 npm run build                 # tsc -b across the workspace
 npm run typecheck -w @arcdiff/viewer
 ```

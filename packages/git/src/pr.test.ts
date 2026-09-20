@@ -68,6 +68,18 @@ describe('parsePrRef', () => {
       .toThrow(/not a GitHub pull-request URL/)
   })
 
+  it('treats owner/repo.git#n as the same project as owner/repo', () => {
+    expect(parsePrRef('acme/widgets.git#7'))
+      .toEqual({ number: 7, project: { owner: 'acme', repo: 'widgets' } })
+  })
+
+  it('reads a URL whose scheme is upper-case', () => {
+    // The guard that routes a string into URL handling is case-insensitive,
+    // so a case-sensitive pattern behind it turns HTTPS:// away as malformed.
+    expect(parsePrRef('HTTPS://github.com/acme/widgets/pull/7'))
+      .toEqual({ number: 7, project: { owner: 'acme', repo: 'widgets' } })
+  })
+
   it('rejects a number that cannot be a pull request', () => {
     expect(() => parsePrRef('0')).toThrow(/1 or more/)
   })
@@ -185,7 +197,7 @@ beforeAll(async () => {
  * actual fetch to the upstream path — which is how a bare `--pr 7` can be
  * exercised at all, since deriving owner/repo requires a URL that names one.
  */
-async function localRepo(originUrl?: string): Promise<string> {
+async function localRepo(originUrl?: string, extraUrl?: string): Promise<string> {
   const path = await scratch('arcdiff-pr-local-')
   const g = git(path)
   await g('init', '-q', '-b', 'main')
@@ -195,6 +207,7 @@ async function localRepo(originUrl?: string): Promise<string> {
   if (originUrl !== undefined) {
     await g('config', `url.${upstream.path}.insteadOf`, originUrl)
   }
+  if (extraUrl !== undefined) await g('remote', 'set-url', '--add', 'origin', extraUrl)
   return path
 }
 
@@ -283,11 +296,46 @@ describe('resolvePr', () => {
     expect(calls).toEqual([])
   })
 
-  it('refuses a bare number when the remote is not on github.com', async () => {
-    const repo = await localRepo('https://gitlab.com/acme/widgets.git')
+  it('refuses a remote that is not on github.com, however --pr is spelled', async () => {
+    // Checking this only for a bare number left owner/repo#n and the full URL
+    // through: owner and repo would match a GitHub Enterprise remote exactly,
+    // and gh would then read github.com's pull request while the fetch pulled
+    // the head from the enterprise host. Two projects, one ordinary diff.
+    const repo = await localRepo('https://github.acme.com/acme/widgets.git')
+    for (const input of ['7', 'acme/widgets#7', 'https://github.com/acme/widgets/pull/7']) {
+      const { lookup, calls } = lookupReturning()
+      await expect(resolvePr({ repoRoot: repo, input, lookup }), input)
+        .rejects.toThrow(/not github\.com/)
+      expect(calls, input).toEqual([])
+    }
+  })
+
+  it('identifies the project from the remote url that fetch actually dials', async () => {
+    // `git remote set-url --add` leaves remote.<name>.url multi-valued, and
+    // `git config --get` returns the LAST value while fetch uses the FIRST.
+    // Reading the last one asks gh for the mirror's pull request #7 — a
+    // different project — while fetching the head from this one.
+    const repo = await localRepo(
+      'https://github.com/acme/widgets.git',
+      'https://github.com/mirror/widgets.git',
+    )
+    const { lookup, calls } = lookupReturning()
+
+    const { baseSha } = await resolvePr({ repoRoot: repo, input: '7', lookup })
+
+    expect(calls).toEqual([{ owner: 'acme', repo: 'widgets', number: 7 }])
+    expect(baseSha).toBe(upstream.forkPoint)
+  })
+
+  it('points at --remote when the pull request lives on a sibling remote', async () => {
+    // Cloning your own fork is the common shape: origin is me/widgets and the
+    // pull request is on acme/widgets under another remote. Telling the user
+    // to re-clone would be the wrong fix.
+    const repo = await localRepo('https://github.com/me/widgets.git')
     const { lookup } = lookupReturning()
-    await expect(resolvePr({ repoRoot: repo, input: '7', lookup }))
-      .rejects.toThrow(/not github\.com/)
+    await expect(resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7', lookup,
+    })).rejects.toThrow(/--remote <name>/)
   })
 
   it('refuses a URL naming a different repository than the remote', async () => {
