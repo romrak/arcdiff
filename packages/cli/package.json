@@ -1,0 +1,14 @@
+{
+  "name": "@arcdiff/cli",
+  "version": "0.0.0",
+  "type": "module",
+  "bin": { "arcdiff": "./dist/index.js" },
+  "main": "./dist/index.js",
+  "dependencies": {
+    "@arcdiff/model": "*",
+    "@arcdiff/extract": "*",
+    "@arcdiff/diff": "*",
+    "@arcdiff/git": "*",
+    "@arcdiff/server": "*"
+  }
+}
