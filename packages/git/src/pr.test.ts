@@ -37,6 +37,22 @@ describe('parsePrRef', () => {
     expect(parsePrRef('https://www.github.com/acme/widgets/pull/7').number).toBe(7)
   })
 
+  it('sees past userinfo and a port to the real host', () => {
+    // Without this the host group captures 'user@github.com' and the URL is
+    // turned away as if it were on some other site.
+    for (const url of [
+      'https://user@github.com/acme/widgets/pull/7',
+      'https://github.com:443/acme/widgets/pull/7',
+    ]) {
+      expect(parsePrRef(url), url).toEqual({ number: 7, owner: 'acme', repo: 'widgets' })
+    }
+  })
+
+  it('does not accept a github.com path segment on another host', () => {
+    expect(() => parsePrRef('https://evil.example/github.com/acme/widgets/pull/7'))
+      .toThrow(/not a GitHub pull-request URL/)
+  })
+
   it('names the host when a pull URL is not on github.com', () => {
     expect(() => parsePrRef('https://github.acme.com/acme/widgets/pull/7'))
       .toThrow(/github\.acme\.com/)
@@ -81,7 +97,12 @@ describe('parseRemoteUrl', () => {
   })
 
   it('returns null for a remote that names no project', () => {
-    for (const url of ['/srv/mirrors/widgets.git', '../sibling', 'github.com', '']) {
+    for (const url of [
+      '/srv/mirrors/widgets.git', '../sibling', 'github.com', '',
+      // A Windows path: the scp-like shape would otherwise read the drive
+      // letter as the host and the last two segments as owner/repo.
+      'C:/repos/widgets',
+    ]) {
       expect(parseRemoteUrl(url), url).toBeNull()
     }
   })

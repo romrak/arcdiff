@@ -30,7 +30,7 @@ export type PrLookup = (target: {
   number: number
 }) => Promise<PrInfo>
 
-const PULL_URL = /^https?:\/\/(?:www\.)?([^/:]+)(?::\d+)?\/([^/]+)\/([^/]+)\/pull\/(\d+)(?:[/?#].*)?$/
+const PULL_URL = /^https?:\/\/(?:[^@/]*@)?(?:www\.)?([^/:]+)(?::\d+)?\/([^/]+)\/([^/]+)\/pull\/(\d+)(?:[/?#].*)?$/
 const OWNER_REPO_HASH = /^([A-Za-z0-9._-]+)\/([A-Za-z0-9._-]+)#(\d+)$/
 const BARE_NUMBER = /^#?(\d+)$/
 
@@ -115,6 +115,12 @@ export function parseRemoteUrl(url: string): { host: string; owner: string; repo
     host = scp[1]!
     path = scp[2]!
   }
+
+  // A host with no dot is not a network host, and the scp-like branch happily
+  // reads a Windows path that way: `C:/repos/widgets` yields host 'C', owner
+  // 'repos', repo 'widgets'. Refusing it here leaves the caller with "this
+  // remote names no project", which is true, instead of a confident wrong pair.
+  if (!host.includes('.') && host !== 'localhost') return null
 
   const parts = path.replace(/\.git$/, '').split('/').filter(p => p.length > 0)
   if (parts.length < 2) return null
