@@ -77,7 +77,7 @@ async function resolveRefPair(repoRoot: string, argv: string[]): Promise<{
   const { baseSha, headSha, pr } = await resolvePr({
     repoRoot,
     input: selection.input,
-    remote: flag(argv, 'remote', 'origin'),
+    remote: optional(argv, 'remote'),
     onProgress: line => process.stderr.write(`arcdiff: ${line}\n`),
   })
   return {
@@ -121,9 +121,9 @@ async function main(): Promise<void> {
     return
   }
 
-  // diff and serve share this: both take either a ref pair or a --pr, and
-  // resolving a PR is a network round trip plus a fetch, so it happens once,
-  // here, rather than inside runDiff where a cache hit would still pay for it.
+  // diff and serve share this. Resolution happens here rather than inside
+  // runDiff because runDiff's contract is a pair of refs, not a pile of
+  // flags — it has no business knowing a pull request exists.
   const refs = await resolveRefPair(repoRoot, argv)
 
   if (cmd === 'serve') {

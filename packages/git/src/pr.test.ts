@@ -4,7 +4,10 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { parsePrRef, parseRemoteUrl, resolvePr, type PrInfo, type PrLookup } from './pr.js'
+import {
+  parsePrRef, parseRemoteUrl, resolvePr,
+  type PrInfo, type PrLookup, type Project,
+} from './pr.js'
 
 const run = promisify(execFile)
 
@@ -16,12 +19,13 @@ describe('parsePrRef', () => {
   })
 
   it('reads owner/repo#number', () => {
-    expect(parsePrRef('acme/widgets#7')).toEqual({ number: 7, owner: 'acme', repo: 'widgets' })
+    expect(parsePrRef('acme/widgets#7'))
+      .toEqual({ number: 7, project: { owner: 'acme', repo: 'widgets' } })
   })
 
   it('reads a pull-request URL', () => {
     expect(parsePrRef('https://github.com/acme/widgets/pull/7'))
-      .toEqual({ number: 7, owner: 'acme', repo: 'widgets' })
+      .toEqual({ number: 7, project: { owner: 'acme', repo: 'widgets' } })
   })
 
   it('reads a URL with the tail a browser leaves on a copied address', () => {
@@ -29,7 +33,7 @@ describe('parsePrRef', () => {
     // rejecting them would make the feature fail on its most common input.
     for (const tail of ['/files', '/commits', '/files#diff-abc123', '?w=1']) {
       expect(parsePrRef(`https://github.com/acme/widgets/pull/7${tail}`))
-        .toEqual({ number: 7, owner: 'acme', repo: 'widgets' })
+        .toEqual({ number: 7, project: { owner: 'acme', repo: 'widgets' } })
     }
   })
 
@@ -44,7 +48,8 @@ describe('parsePrRef', () => {
       'https://user@github.com/acme/widgets/pull/7',
       'https://github.com:443/acme/widgets/pull/7',
     ]) {
-      expect(parsePrRef(url), url).toEqual({ number: 7, owner: 'acme', repo: 'widgets' })
+      expect(parsePrRef(url), url)
+        .toEqual({ number: 7, project: { owner: 'acme', repo: 'widgets' } })
     }
   })
 
@@ -195,9 +200,9 @@ async function localRepo(originUrl?: string): Promise<string> {
 
 function lookupReturning(overrides: Partial<PrInfo> = {}): {
   lookup: PrLookup
-  calls: Array<{ owner: string; repo: string; number: number }>
+  calls: Array<Project & { number: number }>
 } {
-  const calls: Array<{ owner: string; repo: string; number: number }> = []
+  const calls: Array<Project & { number: number }> = []
   const lookup: PrLookup = async target => {
     calls.push(target)
     return {

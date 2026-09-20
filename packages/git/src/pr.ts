@@ -1,15 +1,25 @@
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
-import { gitStdout } from './repo.js'
+import { gitStdout, resolveRef } from './repo.js'
 
 const run = promisify(execFile)
+
+/** The owner and repository a pull request belongs to. */
+export interface Project {
+  owner: string
+  repo: string
+}
 
 /** A pull request as the user spelled it, before anything is resolved. */
 export interface PrRef {
   number: number
-  /** Set only when the input named them — a URL or `owner/repo#n`. */
-  owner?: string
-  repo?: string
+  /**
+   * Set only when the input named it — a URL or `owner/repo#n`. One field
+   * rather than two optional ones, because the two are never known apart:
+   * separate optionals let the type describe a state that cannot occur and
+   * force a non-null assertion at every use.
+   */
+  project?: Project
 }
 
 /** What a lookup has to return for `resolvePr` to do its job. */
@@ -24,11 +34,7 @@ export interface PrInfo {
   isCrossRepository: boolean
 }
 
-export type PrLookup = (target: {
-  owner: string
-  repo: string
-  number: number
-}) => Promise<PrInfo>
+export type PrLookup = (target: Project & { number: number }) => Promise<PrInfo>
 
 const PULL_URL = /^https?:\/\/(?:[^@/]*@)?(?:www\.)?([^/:]+)(?::\d+)?\/([^/]+)\/([^/]+)\/pull\/(\d+)(?:[/?#].*)?$/
 const OWNER_REPO_HASH = /^([A-Za-z0-9._-]+)\/([A-Za-z0-9._-]+)#(\d+)$/
@@ -69,12 +75,15 @@ export function parsePrRef(input: string): PrRef {
         'Pass --base and --head instead.',
       )
     }
-    return { number: prNumber(digits!, s), owner: owner!, repo: repo!.replace(/\.git$/, '') }
+    return {
+      number: prNumber(digits!, s),
+      project: { owner: owner!, repo: repo!.replace(/\.git$/, '') },
+    }
   }
 
   const short = OWNER_REPO_HASH.exec(s)
   if (short !== null) {
-    return { number: prNumber(short[3]!, s), owner: short[1]!, repo: short[2]! }
+    return { number: prNumber(short[3]!, s), project: { owner: short[1]!, repo: short[2]! } }
   }
 
   const bare = BARE_NUMBER.exec(s)
@@ -94,7 +103,7 @@ export function parsePrRef(input: string): PrRef {
  * unrecognisable remote means. The last two path segments are the pair —
  * a scheme URL may carry a port and userinfo, which are stripped.
  */
-export function parseRemoteUrl(url: string): { host: string; owner: string; repo: string } | null {
+export function parseRemoteUrl(url: string): (Project & { host: string }) | null {
   const s = url.trim().replace(/\/+$/, '')
   let host: string
   let path: string
@@ -162,11 +171,9 @@ export const ghLookup: PrLookup = async ({ owner, repo, number }) => {
 }
 
 /** GitHub treats owner and repo case-insensitively; so must any comparison. */
-function sameProject(
-  local: { owner: string; repo: string }, owner: string, repo: string,
-): boolean {
-  return local.owner.toLowerCase() === owner.toLowerCase() &&
-    local.repo.toLowerCase() === repo.toLowerCase()
+function sameProject(a: Project, b: Project): boolean {
+  return a.owner.toLowerCase() === b.owner.toLowerCase() &&
+    a.repo.toLowerCase() === b.repo.toLowerCase()
 }
 
 export interface ResolvePrOptions {
@@ -243,20 +250,18 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
   const remoteUrl = await remoteUrlOf(o.repoRoot, remote)
   const local = parseRemoteUrl(remoteUrl)
 
-  let owner: string
-  let repo: string
-  if (ref.owner !== undefined) {
-    owner = ref.owner
-    repo = ref.repo!
+  let project: Project
+  if (ref.project !== undefined) {
+    project = ref.project
     // Only a remote that names a project can contradict the URL. One spelled
     // as a filesystem path names none, so there is nothing to disagree with
     // and the URL simply stands.
-    if (local !== null && !sameProject(local, owner, repo)) {
+    if (local !== null && !sameProject(local, project)) {
       throw new Error(
-        `arcdiff: --pr names ${owner}/${repo} but the '${remote}' remote is ` +
-        `${local.owner}/${local.repo}. Point --repo at a clone of ${owner}/${repo}: ` +
-        'pull request numbers are per-repository, so resolving this one here ' +
-        'would diff unrelated commits.',
+        `arcdiff: --pr names ${project.owner}/${project.repo} but the '${remote}' ` +
+        `remote is ${local.owner}/${local.repo}. Point --repo at a clone of ` +
+        `${project.owner}/${project.repo}: pull request numbers are per-repository, ` +
+        'so resolving this one here would diff unrelated commits.',
       )
     }
   } else if (local === null) {
@@ -271,11 +276,10 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
       `on '${local.host}', not github.com. --pr understands GitHub only.`,
     )
   } else {
-    owner = local.owner
-    repo = local.repo
+    project = { owner: local.owner, repo: local.repo }
   }
 
-  const pr = await (o.lookup ?? ghLookup)({ owner, repo, number: ref.number })
+  const pr = await (o.lookup ?? ghLookup)({ ...project, number: ref.number })
 
   note(`PR #${pr.number} "${pr.title}" (${pr.state.toLowerCase()}${pr.isCrossRepository ? ', from a fork' : ''})`)
   note(`fetching refs/pull/${pr.number}/head and ${pr.baseRefName} from ${remote}`)
@@ -296,7 +300,7 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
     )
   }
 
-  const headSha = (await gitStdout(o.repoRoot, ['rev-parse', `${headRef}^{commit}`])).trim()
+  const headSha = await resolveRef(o.repoRoot, headRef)
 
   // merge-base exits non-zero when the two commits share no ancestor, which
   // here means the history needed to find one is not in this clone: a shallow

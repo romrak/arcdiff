@@ -11,6 +11,6 @@ export {
 // viewer bundle once already. The pure diff parsing lives behind './hunks' for
 // exactly that reason; nothing here belongs beside it.
 export {
-  parsePrRef, parseRemoteUrl, resolvePr, ghLookup,
-  type PrRef, type PrInfo, type PrLookup, type ResolvePrOptions, type ResolvedPr,
+  resolvePr,
+  type PrInfo, type PrLookup, type Project, type ResolvePrOptions, type ResolvedPr,
 } from './pr.js'

@@ -443,12 +443,13 @@ describe('buildDeltaDocument with a pull request', () => {
     })
   })
 
-  // Absent, not null: every reader — the server and the viewer both declare
-  // their own structural DeltaDocument — would otherwise have to tell an
-  // explicit null apart from a missing key to answer the same question.
-  it('writes no key at all for a plain --base/--head run', () => {
-    const d = buildDeltaDocument(common)
-    expect('pullRequest' in d.source).toBe(false)
+  // Asserted on the round trip, because that is the only form a reader ever
+  // sees: every consumer reads delta.json off disk, and JSON.stringify drops
+  // an undefined-valued key outright. The in-memory object still carries the
+  // property, so checking it there would test something nothing observes.
+  it('writes no pullRequest key for a plain --base/--head run', () => {
+    const onDisk = JSON.parse(JSON.stringify(buildDeltaDocument(common)))
+    expect('pullRequest' in onDisk.source).toBe(false)
   })
 })
 

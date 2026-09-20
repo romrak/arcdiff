@@ -379,14 +379,6 @@ export async function runExtract(o: ExtractCliOptions): Promise<ExtractRunResult
 }
 
 /**
- * What `delta.json` carries beside the delta itself. Everything here is
- * something a renderer cannot reconstruct from the delta: the drill-down is
- * `git diff <base> <head> -- <subdir>` run from `repoRoot`, and the spec's
- * "hide affordances the server cannot support" needs the capabilities the
- * language server advertised — which `LspClient.start` probes and, until now,
- * discarded.
- */
-/**
  * The pull request `--pr` resolved, when that is where base and head came
  * from. Enough to name and link the PR, and nothing more: the refs it
  * resolved to are already `source.base.ref` and `source.head.ref`, and
@@ -398,6 +390,14 @@ export interface PullRequestInfo {
   url: string
 }
 
+/**
+ * What `delta.json` carries beside the delta itself. Everything here is
+ * something a renderer cannot reconstruct from the delta: the drill-down is
+ * `git diff <base> <head> -- <subdir>` run from `repoRoot`, and the spec's
+ * "hide affordances the server cannot support" needs the capabilities the
+ * language server advertised — which `LspClient.start` probes and, until now,
+ * discarded.
+ */
 export interface DeltaSource {
   repoRoot: string
   subdir: string
@@ -437,10 +437,7 @@ export function buildDeltaDocument(o: {
       base: { ref: o.baseRef, modelPath: o.baseModelPath },
       head: { ref: o.headRef, modelPath: o.headModelPath },
       capabilities: o.capabilities ?? null,
-      // Spread rather than `pullRequest: o.pullRequest`, so a non-PR run
-      // writes no key at all instead of an explicit `"pullRequest": null`
-      // that every reader would then have to distinguish from absent.
-      ...(o.pullRequest !== undefined ? { pullRequest: o.pullRequest } : {}),
+      pullRequest: o.pullRequest,
     },
   }
 }

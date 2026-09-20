@@ -8,9 +8,9 @@ const run = promisify(execFile)
 const MAX = 64 * 1024 * 1024
 
 /**
- * Run git inside `repoRoot` and return its stdout. Exported because `pr.ts`
- * needs the identical invocation — same `-C` anchoring, same buffer ceiling —
- * and a second private copy there would drift from this one.
+ * Run git inside `repoRoot` and return its stdout, with a buffer ceiling that
+ * a whole-repo diff will not overrun. Every git invocation in this package
+ * goes through here, so `-C` anchoring and that ceiling hold uniformly.
  */
 export async function gitStdout(repoRoot: string, args: string[]): Promise<string> {
   const { stdout } = await run('git', ['-C', repoRoot, ...args], { maxBuffer: MAX })
