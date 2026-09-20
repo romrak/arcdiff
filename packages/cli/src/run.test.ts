@@ -309,7 +309,7 @@ describe('runExtract cache-hit guard for noBasesResolved', () => {
 // --- Final fix wave -------------------------------------------------------
 
 import { MODEL_SCHEMA_VERSION } from '@arcdiff/model'
-import { buildDeltaDocument } from './run.js'
+import { buildDeltaDocument, selectRefs } from './run.js'
 
 describe('cache key schema version', () => {
   it('carries the model schema version, so an id-rule change cannot be served from an old cache', () => {
@@ -419,6 +419,75 @@ describe('buildDeltaDocument', () => {
       capabilities: undefined,
     })
     expect(d.source.capabilities).toBeNull()
+  })
+})
+
+// --- `--pr`: one identifier in place of a ref pair --------------------------
+
+describe('buildDeltaDocument with a pull request', () => {
+  const delta = { base: 'b', head: 'h', elements: [], edges: [] }
+  const common = {
+    delta, signals: [], repoRoot: '/repo', subdir: 'src',
+    baseRef: 'b77aa1f', headRef: 'a89e1a3',
+    baseModelPath: '/c/b.json', headModelPath: '/c/h.json',
+    capabilities: undefined,
+  }
+
+  it('records the pull request the refs came from', () => {
+    const d = buildDeltaDocument({
+      ...common,
+      pullRequest: { number: 7, title: 'Add a run method', url: 'https://x/pull/7' },
+    })
+    expect(d.source.pullRequest).toEqual({
+      number: 7, title: 'Add a run method', url: 'https://x/pull/7',
+    })
+  })
+
+  // Asserted on the round trip, because that is the only form a reader ever
+  // sees: every consumer reads delta.json off disk, and JSON.stringify drops
+  // an undefined-valued key outright. The in-memory object still carries the
+  // property, so checking it there would test something nothing observes.
+  it('writes no pullRequest key for a plain --base/--head run', () => {
+    const onDisk = JSON.parse(JSON.stringify(buildDeltaDocument(common)))
+    expect('pullRequest' in onDisk.source).toBe(false)
+  })
+})
+
+describe('selectRefs', () => {
+  it('defaults head to HEAD when only --base is given', () => {
+    expect(selectRefs({ base: 'main' })).toEqual({ kind: 'refs', base: 'main', head: 'HEAD' })
+  })
+
+  it('takes both refs when both are given', () => {
+    expect(selectRefs({ base: 'main', head: 'topic' }))
+      .toEqual({ kind: 'refs', base: 'main', head: 'topic' })
+  })
+
+  it('defers to resolvePr when --pr is given alone', () => {
+    expect(selectRefs({ pr: '7' })).toEqual({ kind: 'pr', input: '7' })
+  })
+
+  // Refused rather than resolved by precedence: whichever flag lost would be
+  // the one that changed the answer, and the run would look entirely normal.
+  it('refuses --pr together with --base, naming the flag to drop', () => {
+    expect(() => selectRefs({ pr: '7', base: 'main' })).toThrow(/--base/)
+  })
+
+  it('refuses --pr together with --head', () => {
+    expect(() => selectRefs({ pr: '7', head: 'topic' })).toThrow(/--head/)
+  })
+
+  it('names both flags when both are given alongside --pr', () => {
+    expect(() => selectRefs({ pr: '7', base: 'main', head: 'topic' }))
+      .toThrow(/--base and --head/)
+  })
+
+  it('points at --pr when neither it nor --base is given', () => {
+    expect(() => selectRefs({})).toThrow(/missing required --base \(or pass --pr/)
+  })
+
+  it('does not treat a --head-only invocation as complete', () => {
+    expect(() => selectRefs({ head: 'topic' })).toThrow(/missing required --base/)
   })
 })
 

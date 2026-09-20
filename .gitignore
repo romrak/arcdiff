@@ -6,3 +6,10 @@ dist/
 __pycache__/
 test-results/
 playwright-report/
+
+# Output of a local run. This repository is public and these files are not:
+# a delta names the analysed repository's path, every changed file in it, and
+# the pull request's title; a cache holds a full structural model of its source.
+delta.json
+*.delta.json
+.arcdiff-cache/

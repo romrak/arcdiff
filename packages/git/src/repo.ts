@@ -7,13 +7,18 @@ import { join } from 'node:path'
 const run = promisify(execFile)
 const MAX = 64 * 1024 * 1024
 
-async function git(repoRoot: string, args: string[]): Promise<string> {
+/**
+ * Run git inside `repoRoot` and return its stdout, with a buffer ceiling that
+ * a whole-repo diff will not overrun. Every git invocation in this package
+ * goes through here, so `-C` anchoring and that ceiling hold uniformly.
+ */
+export async function gitStdout(repoRoot: string, args: string[]): Promise<string> {
   const { stdout } = await run('git', ['-C', repoRoot, ...args], { maxBuffer: MAX })
   return stdout
 }
 
 export async function resolveRef(repoRoot: string, ref: string): Promise<string> {
-  return (await git(repoRoot, ['rev-parse', '--verify', `${ref}^{commit}`])).trim()
+  return (await gitStdout(repoRoot, ['rev-parse', '--verify', `${ref}^{commit}`])).trim()
 }
 
 /**
@@ -60,7 +65,7 @@ function matchesAnyGlob(path: string, globs: string[]): boolean {
 export async function listPythonFiles(
   repoRoot: string, ref: string, subdir: string, excludeGlobs: string[] = [],
 ): Promise<string[]> {
-  const out = await git(repoRoot, ['ls-tree', '-r', '--name-only', ref, '--', subdir])
+  const out = await gitStdout(repoRoot, ['ls-tree', '-r', '--name-only', ref, '--', subdir])
   const prefix = subdir.endsWith('/') ? subdir : `${subdir}/`
   return out.split('\n')
     .filter(p => p.endsWith('.py'))
@@ -83,7 +88,7 @@ export async function diffText(
    */
   pathspec?: string,
 ): Promise<string> {
-  return git(repoRoot, [
+  return gitStdout(repoRoot, [
     '-c', 'core.quotepath=false',
     'diff', `--unified=${context}`, '--no-color', `--relative=${subdir}`,
     base, head, '--', pathspec ?? subdir,
@@ -97,11 +102,11 @@ export async function withWorktree<T>(
   const dir = await mkdtemp(join(tmpdir(), 'arcdiff-wt-'))
   const wt = join(dir, 'tree')
   try {
-    await git(repoRoot, ['worktree', 'add', '-q', '--detach', wt, ref])
+    await gitStdout(repoRoot, ['worktree', 'add', '-q', '--detach', wt, ref])
     try {
       return await fn(wt)
     } finally {
-      try { await git(repoRoot, ['worktree', 'remove', '--force', wt]) } catch { /* best effort */ }
+      try { await gitStdout(repoRoot, ['worktree', 'remove', '--force', wt]) } catch { /* best effort */ }
     }
   } finally {
     try { await rm(dir, { recursive: true, force: true }) } catch { /* best effort */ }
