@@ -183,7 +183,8 @@ Stated plainly rather than discovered later.
 - **Committed refs only.** No working-tree diffs, no rename detection — a rename
   reads as a remove plus an add.
 - **`--pr` is GitHub only**, and needs `gh` on PATH. A GitLab or Bitbucket URL is
-  refused by name; use `--base` and `--head` there.
+  refused — as one that is not a GitHub pull-request URL, since neither spells its
+  path `/pull/<n>`. Use `--base` and `--head` there.
 - **A removed element has no box**, because the box tree is built from the head
   model. Its change is in `delta.json` but you cannot click it on the canvas.
 - **Same-name redefinitions in one scope are a hard failure.** An element id is a
@@ -206,7 +207,7 @@ Stated plainly rather than discovered later.
 ## Development
 
 ```bash
-npm test                      # 351 unit and integration tests
+npm test                      # 391 unit and integration tests
 npm run build                 # tsc -b across the workspace
 npm run typecheck -w @arcdiff/viewer
 ```

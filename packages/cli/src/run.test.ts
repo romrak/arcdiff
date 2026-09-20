@@ -422,6 +422,8 @@ describe('buildDeltaDocument', () => {
   })
 })
 
+// --- `--pr`: one identifier in place of a ref pair --------------------------
+
 describe('buildDeltaDocument with a pull request', () => {
   const delta = { base: 'b', head: 'h', elements: [], edges: [] }
   const common = {
