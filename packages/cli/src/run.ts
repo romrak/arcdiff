@@ -386,6 +386,18 @@ export async function runExtract(o: ExtractCliOptions): Promise<ExtractRunResult
  * language server advertised — which `LspClient.start` probes and, until now,
  * discarded.
  */
+/**
+ * The pull request `--pr` resolved, when that is where base and head came
+ * from. Enough to name and link the PR, and nothing more: the refs it
+ * resolved to are already `source.base.ref` and `source.head.ref`, and
+ * duplicating them here would give two places to disagree.
+ */
+export interface PullRequestInfo {
+  number: number
+  title: string
+  url: string
+}
+
 export interface DeltaSource {
   repoRoot: string
   subdir: string
@@ -393,6 +405,8 @@ export interface DeltaSource {
   head: { ref: string; modelPath: string }
   /** null when no sidecar recorded them, never a guess. */
   capabilities: LspCapabilities | null
+  /** Absent for a plain `--base`/`--head` run; readers must tolerate that. */
+  pullRequest?: PullRequestInfo
 }
 
 /** The `delta.json` document. `delta` and `signals` keep their existing shape. */
@@ -412,6 +426,7 @@ export function buildDeltaDocument(o: {
   baseModelPath: string
   headModelPath: string
   capabilities: LspCapabilities | undefined
+  pullRequest?: PullRequestInfo
 }): DeltaDocument {
   return {
     delta: o.delta,
@@ -422,14 +437,63 @@ export function buildDeltaDocument(o: {
       base: { ref: o.baseRef, modelPath: o.baseModelPath },
       head: { ref: o.headRef, modelPath: o.headModelPath },
       capabilities: o.capabilities ?? null,
+      // Spread rather than `pullRequest: o.pullRequest`, so a non-PR run
+      // writes no key at all instead of an explicit `"pullRequest": null`
+      // that every reader would then have to distinguish from absent.
+      ...(o.pullRequest !== undefined ? { pullRequest: o.pullRequest } : {}),
     },
   }
+}
+
+/**
+ * Which two commits a `diff` or `serve` invocation is about: either the user
+ * named them directly, or they named a pull request for `resolvePr` to turn
+ * into a pair.
+ */
+export type RefSelection =
+  | { kind: 'refs'; base: string; head: string }
+  | { kind: 'pr'; input: string }
+
+/**
+ * Pure argument arbitration, kept out of `index.ts` so the rules are testable
+ * without spawning the binary.
+ *
+ * `--pr` alongside `--base`/`--head` is refused rather than resolved by
+ * precedence. Either order of precedence silently ignores something the user
+ * asked for, and the one that loses is the one that would have changed the
+ * answer — a run that quietly diffed the wrong pair looks exactly like a run
+ * that diffed the right one.
+ */
+export function selectRefs(flags: {
+  pr?: string
+  base?: string
+  head?: string
+}): RefSelection {
+  if (flags.pr !== undefined) {
+    const also = [
+      flags.base !== undefined ? '--base' : null,
+      flags.head !== undefined ? '--head' : null,
+    ].filter((f): f is string => f !== null)
+    if (also.length > 0) {
+      throw new Error(
+        `arcdiff: --pr already determines both refs, so it cannot be combined with ` +
+        `${also.join(' and ')}. Drop ${also.length > 1 ? 'them' : 'it'}, or drop --pr.`,
+      )
+    }
+    return { kind: 'pr', input: flags.pr }
+  }
+  if (flags.base === undefined) {
+    throw new Error('arcdiff: missing required --base (or pass --pr <number-or-url>)')
+  }
+  return { kind: 'refs', base: flags.base, head: flags.head ?? 'HEAD' }
 }
 
 export interface DiffCliOptions extends Omit<ExtractCliOptions, 'ref'> {
   base: string
   head: string
   outPath: string
+  /** Recorded in the delta document when base and head came from `--pr`. */
+  pullRequest?: PullRequestInfo
 }
 
 export interface DiffRunResult {
@@ -462,6 +526,7 @@ export async function runDiff(o: DiffCliOptions): Promise<DiffRunResult> {
     repoRoot: o.repoRoot, subdir: o.subdir,
     baseRef: baseSha, headRef: headSha,
     baseModelPath: baseResult.path, headModelPath: headResult.path,
+    pullRequest: o.pullRequest,
     // Both models come from the same --lsp, so either sidecar answers; head is
     // the one a renderer is describing.
     capabilities: headResult.stats.capabilities,

@@ -46,6 +46,7 @@ pull in one hop at a time, so the graph grows only where you ask it to.
 | Node | >= 20 |
 | Python | `python3.14` on PATH (for the AST pass) |
 | Language server | `pyright-langserver` on PATH (for base-class resolution) |
+| GitHub CLI | `gh`, authenticated — only for `--pr`; not needed otherwise |
 
 ## Quickstart
 
@@ -78,17 +79,55 @@ Rooting pip at `src/pip` instead of `src/` drops the import graph from 739 edges
 
 ```
 arcdiff extract --repo <path> --subdir <path> [--ref HEAD]
-arcdiff diff    --repo <path> --subdir <path> --base <ref> [--head HEAD] [--out delta.json]
-arcdiff serve   --repo <path> --subdir <path> --base <ref> [--head HEAD] [--port 5173] [--no-open]
+arcdiff diff    --repo <path> --subdir <path> (--base <ref> [--head HEAD] | --pr <id>) [--out delta.json]
+arcdiff serve   --repo <path> --subdir <path> (--base <ref> [--head HEAD] | --pr <id>) [--port 5173] [--no-open]
 ```
 
 `--exclude <glob>` is repeatable and matched against subdir-relative `.py` paths at
 listing time, so an excluded file never enters the model.
 
-**Diffing a pull request:** use the merge base, not the base branch tip.
-`git merge-base main feature` is the fork point; the branch's current head mixes your
-PR with everything merged since. On one real PR that was the difference between 31
-signals and 592.
+### Diffing a pull request
+
+`--pr` takes the place of `--base` and `--head`:
+
+```bash
+node packages/cli/dist/index.js serve --repo ~/src/pip --subdir src --pr 13535
+```
+
+Any of these spellings work — paste the address bar if that is what you have:
+
+```
+13535                                      #13535
+pypa/pip#13535                             https://github.com/pypa/pip/pull/13535
+https://github.com/pypa/pip/pull/13535/files
+```
+
+A bare number is resolved against the `origin` remote; pass `--remote <name>` to use
+a different one. A URL that names a different repository than the remote is refused
+rather than resolved, because pull-request numbers are per-repository and the wrong
+one would diff a plausible-looking pair of unrelated commits.
+
+**The base is the merge base, not the base branch tip.** This is the whole reason
+the flag exists. The tip mixes the pull request with everything merged into the base
+since it forked, with the direction of those commits inverted, and arcdiff then
+reports that drift as the pull request's work. Measured on `pypa/pip#13535` at
+`main` = `2b28a816d`, 87 commits ahead of that pull request's fork point:
+
+| base | changed elements | signals |
+|---|---|---|
+| `main` tip — what the API's `baseRefOid` gives you | 408 | 97 |
+| merge base — what `--pr` uses | **11** | **3** |
+
+Reproduce it by running the same head twice, once with `--pr 13535` and once with
+`--base 2b28a816d --head 96f3c97989` — pinned rather than `origin/main`, which
+moves.
+
+`--pr` reads the pull request through `gh`, then fetches `refs/pull/<n>/head` and the
+base branch from the remote. Fetching is the one side effect: it advances
+`refs/remotes/<remote>/<base>` exactly as an ordinary `git fetch` would, and parks the
+pull-request head under `refs/arcdiff/<remote>/pr/<n>`. Reading through
+`refs/pull/<n>/head` rather than the contributor's branch is what makes fork,
+merged and closed pull requests work — and most real ones are forks.
 
 ## How it works
 
@@ -143,6 +182,8 @@ Stated plainly rather than discovered later.
   TS are not implemented.
 - **Committed refs only.** No working-tree diffs, no rename detection — a rename
   reads as a remove plus an add.
+- **`--pr` is GitHub only**, and needs `gh` on PATH. A GitLab or Bitbucket URL is
+  refused by name; use `--base` and `--head` there.
 - **A removed element has no box**, because the box tree is built from the head
   model. Its change is in `delta.json` but you cannot click it on the canvas.
 - **Same-name redefinitions in one scope are a hard failure.** An element id is a

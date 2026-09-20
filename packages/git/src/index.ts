@@ -5,3 +5,7 @@ export {
 export {
   resolveRef, listPythonFiles, diffText, withWorktree, writePyrightConfig,
 } from './repo.js'
+export {
+  parsePrRef, parseRemoteUrl, resolvePr, ghLookup,
+  type PrRef, type PrInfo, type PrLookup, type ResolvePrOptions, type ResolvedPr,
+} from './pr.js'
