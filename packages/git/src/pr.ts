@@ -32,6 +32,12 @@ export interface PrInfo {
   baseRefName: string
   headRefOid: string
   isCrossRepository: boolean
+  /**
+   * The pull request's own commits, oldest first — the history it added, not
+   * the base branch's. Needed only to recover a fork point once the base
+   * branch has absorbed the pull request; see `forkPointOfAbsorbedPr`.
+   */
+  commits: Array<{ oid: string }>
 }
 
 export type PrLookup = (target: Project & { number: number }) => Promise<PrInfo>
@@ -143,7 +149,8 @@ export function parseRemoteUrl(url: string): (Project & { host: string }) | null
   return { host, owner: parts[parts.length - 2]!, repo: parts[parts.length - 1]! }
 }
 
-const GH_FIELDS = 'number,title,url,state,baseRefName,headRefOid,isCrossRepository'
+const GH_FIELDS =
+  'number,title,url,state,baseRefName,headRefOid,isCrossRepository,commits'
 
 function ghError(e: unknown, target: string, number: number): Error {
   const err = e as NodeJS.ErrnoException & { stderr?: string }
@@ -220,6 +227,67 @@ export interface ResolvedPr {
  * URL is the one that names the project; the rewrite only decides what git
  * dials, and `git fetch` applies it either way.
  */
+async function isAncestor(repoRoot: string, maybe: string, of: string): Promise<boolean> {
+  try {
+    await gitStdout(repoRoot, ['merge-base', '--is-ancestor', maybe, of])
+    return true
+  } catch {
+    return false
+  }
+}
+
+/**
+ * The commit a pull request forked from, for the case where `merge-base`
+ * cannot say: the base branch already CONTAINS the pull request, so the merge
+ * base of the two collapses onto the head itself and the diff is empty.
+ *
+ * That happens whenever the head ends up reachable from the base branch, which
+ * a merge commit always does — squash and rebase both write new commits, so
+ * the original `refs/pull/<n>/head` stays off the branch and the ordinary
+ * merge base still lands on the fork point. On a project that merges that way
+ * this is not an edge case: it is every merged pull request.
+ *
+ * The answer comes from the pull request's own commits rather than from the
+ * branch, because those are the one description of it that merging never
+ * rewrites. The first commit's parent is the fork point.
+ *
+ * It is then verified to be an ancestor of the head and not the head itself,
+ * so a surprise in the order the commits arrive in fails loudly instead of
+ * silently picking some commit inside the pull request.
+ */
+async function forkPointOfAbsorbedPr(
+  repoRoot: string, pr: PrInfo, headSha: string,
+): Promise<string> {
+  const first = pr.commits[0]?.oid
+  if (first === undefined) {
+    throw new Error(
+      `arcdiff: '${pr.baseRefName}' already contains pull request ${pr.number}, ` +
+      'so there is no merge base to diff against, and the pull request reports ' +
+      'no commits of its own to recover a fork point from.',
+    )
+  }
+
+  let forkPoint: string
+  try {
+    forkPoint = (await gitStdout(repoRoot, ['rev-parse', `${first}^{commit}^`])).trim()
+  } catch {
+    throw new Error(
+      `arcdiff: '${pr.baseRefName}' already contains pull request ${pr.number}, and ` +
+      `its first commit ${first.slice(0, 10)} has no parent to fall back to — a ` +
+      'pull request opened against an empty repository cannot be diffed.',
+    )
+  }
+
+  if (forkPoint === headSha || !(await isAncestor(repoRoot, forkPoint, headSha))) {
+    throw new Error(
+      `arcdiff: '${pr.baseRefName}' already contains pull request ${pr.number}, and ` +
+      `the fork point recovered from its first commit (${forkPoint.slice(0, 10)}) is ` +
+      'not an ancestor of the head. Pass --base and --head explicitly.',
+    )
+  }
+  return forkPoint
+}
+
 async function remoteUrlOf(repoRoot: string, remote: string): Promise<string> {
   try {
     const out = await gitStdout(repoRoot, ['config', '--get-all', `remote.${remote}.url`])
@@ -352,13 +420,23 @@ export async function resolvePr(o: ResolvePrOptions): Promise<ResolvedPr> {
     )
   }
 
+  // A merge base equal to the head means the base branch already contains the
+  // pull request. Left alone it diffs a commit against itself and reports no
+  // change at all — the one answer a reviewer cannot tell apart from "nothing
+  // to review here".
+  const absorbed = baseSha === headSha
+  if (absorbed) {
+    note(`'${pr.baseRefName}' already contains this pull request — recovering its fork point`)
+    baseSha = await forkPointOfAbsorbedPr(o.repoRoot, pr, headSha)
+  }
+
   // The PR can take a new push between the lookup and the fetch. The fetched
   // ref is what actually exists, so it wins; saying so keeps the printed head
   // from silently disagreeing with the one on the PR page.
   if (headSha !== pr.headRefOid) {
     note(`head moved during resolution — using the fetched ${headSha.slice(0, 10)}`)
   }
-  note(`base ${baseSha.slice(0, 10)} (merge-base with ${pr.baseRefName})`)
+  note(`base ${baseSha.slice(0, 10)} (${absorbed ? 'fork point' : 'merge-base'} with ${pr.baseRefName})`)
   note(`head ${headSha.slice(0, 10)}`)
 
   return { baseSha, headSha, pr }

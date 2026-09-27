@@ -128,6 +128,22 @@ Reproduce it by running the same head twice, once with `--pr 13535` and once wit
 `--base 2b28a816d --head 96f3c97989` — pinned rather than `origin/main`, which
 moves.
 
+**A merged pull request works too**, which takes one extra step. Merging with a merge
+commit puts the pull request's own head on the base branch, so the merge base of the
+two collapses onto the head and the diff would come out empty — no changed elements,
+no signals, indistinguishable from a pull request that did nothing. When arcdiff sees
+that, it recovers the fork point from the pull request's own first commit instead, and
+says so:
+
+```
+arcdiff: 'master' already contains this pull request — recovering its fork point
+arcdiff: base ba134009bd (fork point with master)
+```
+
+Squash and rebase merges need none of this: both write new commits, so the original
+`refs/pull/<n>/head` never joins the base branch and the ordinary merge base is still
+the fork point.
+
 `--pr` reads the pull request through `gh`, then fetches `refs/pull/<n>/head` and the
 base branch from the remote. Fetching is the one side effect: it advances
 `refs/remotes/<remote>/<base>` exactly as an ordinary `git fetch` would, and parks the
@@ -213,7 +229,7 @@ Stated plainly rather than discovered later.
 ## Development
 
 ```bash
-npm test                      # 395 unit and integration tests
+npm test                      # 401 unit and integration tests
 npm run build                 # tsc -b across the workspace
 npm run typecheck -w @arcdiff/viewer
 ```
