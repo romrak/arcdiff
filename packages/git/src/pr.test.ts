@@ -160,6 +160,8 @@ interface Upstream {
 }
 
 let upstream: Upstream
+/** The same shape, but with the pull request already merged into `main`. */
+let merged: Upstream
 
 beforeAll(async () => {
   const path = await scratch('arcdiff-pr-upstream-')
@@ -189,7 +191,44 @@ beforeAll(async () => {
   const mainTip = await g('rev-parse', 'HEAD')
 
   upstream = { path, forkPoint, prHead, mainTip }
+  merged = await buildMergedUpstream()
 })
+
+/**
+ * A merge commit is what puts the ORIGINAL `refs/pull/<n>/head` on the base
+ * branch: squash and rebase both write new commits, leaving the original off
+ * it. So this is the one shape where `merge-base(main, head)` collapses onto
+ * the head.
+ */
+async function buildMergedUpstream(): Promise<Upstream> {
+  const path = await scratch('arcdiff-pr-merged-')
+  const g = git(path)
+  await g('init', '-q', '-b', 'main')
+  await g('config', 'user.email', 't@t')
+  await g('config', 'user.name', 'T')
+  await g('config', 'commit.gpgsign', 'false')
+
+  await writeFile(join(path, 'a.py'), 'class A:\n    pass\n', 'utf8')
+  await g('add', '-A'); await g('commit', '-q', '-m', 'fork point')
+  const forkPoint = await g('rev-parse', 'HEAD')
+
+  await g('checkout', '-q', '-b', 'contributor')
+  await writeFile(join(path, 'a.py'), 'class A:\n    def run(self):\n        pass\n', 'utf8')
+  await g('add', '-A'); await g('commit', '-q', '-m', 'the pull request')
+  const prHead = await g('rev-parse', 'HEAD')
+  await g('update-ref', 'refs/pull/7/head', prHead)
+
+  await g('checkout', '-q', 'main')
+  for (const n of [1, 2]) {
+    await writeFile(join(path, `drift${n}.py`), `X = ${n}\n`, 'utf8')
+    await g('add', '-A'); await g('commit', '-q', '-m', `drift ${n}`)
+  }
+  await g('merge', '-q', '--no-ff', 'contributor', '-m', 'Merge pull request #7')
+  await g('branch', '-D', 'contributor')
+  const mainTip = await g('rev-parse', 'HEAD')
+
+  return { path, forkPoint, prHead, mainTip }
+}
 
 /**
  * A repo with `origin` pointing at the upstream. When `originUrl` is given it
@@ -197,18 +236,22 @@ beforeAll(async () => {
  * actual fetch to the upstream path — which is how a bare `--pr 7` can be
  * exercised at all, since deriving owner/repo requires a URL that names one.
  */
-async function localRepo(originUrl?: string, extraUrl?: string): Promise<string> {
+async function cloneOf(up: Upstream, originUrl?: string, extraUrl?: string): Promise<string> {
   const path = await scratch('arcdiff-pr-local-')
   const g = git(path)
   await g('init', '-q', '-b', 'main')
   await g('config', 'user.email', 't@t')
   await g('config', 'user.name', 'T')
-  await g('remote', 'add', 'origin', originUrl ?? upstream.path)
+  await g('remote', 'add', 'origin', originUrl ?? up.path)
   if (originUrl !== undefined) {
-    await g('config', `url.${upstream.path}.insteadOf`, originUrl)
+    await g('config', `url.${up.path}.insteadOf`, originUrl)
   }
   if (extraUrl !== undefined) await g('remote', 'set-url', '--add', 'origin', extraUrl)
   return path
+}
+
+async function localRepo(originUrl?: string, extraUrl?: string): Promise<string> {
+  return cloneOf(upstream, originUrl, extraUrl)
 }
 
 function lookupReturning(overrides: Partial<PrInfo> = {}): {
@@ -226,6 +269,7 @@ function lookupReturning(overrides: Partial<PrInfo> = {}): {
       baseRefName: 'main',
       headRefOid: upstream.prHead,
       isCrossRepository: true,
+      commits: [{ oid: upstream.prHead }],
       ...overrides,
     }
   }
@@ -364,6 +408,96 @@ describe('resolvePr', () => {
       repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7',
       remote: 'upstream', lookup,
     })).rejects.toThrow(/could not read remote 'upstream'/)
+  })
+
+  it('recovers the fork point when the base branch already contains the PR', async () => {
+    // A merged pull request is an ordinary thing to want to review. With a
+    // merge commit its head becomes reachable from the base branch, so
+    // merge-base(main, head) collapses onto the head and the diff is empty —
+    // zero changed elements, zero signals, indistinguishable from a pull
+    // request that did nothing.
+    const repo = await cloneOf(merged)
+    const { lookup } = lookupReturning({
+      headRefOid: merged.prHead,
+      commits: [{ oid: merged.prHead }],
+      state: 'MERGED',
+    })
+
+    const { baseSha, headSha } = await resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7', lookup,
+    })
+
+    expect(headSha).toBe(merged.prHead)
+    expect(baseSha).toBe(merged.forkPoint)
+    expect(baseSha).not.toBe(headSha)
+  })
+
+  it('keeps a merged PR scoped to its own work, not the branch it landed on', async () => {
+    const repo = await cloneOf(merged)
+    const { lookup } = lookupReturning({
+      headRefOid: merged.prHead, commits: [{ oid: merged.prHead }], state: 'MERGED',
+    })
+    const { baseSha, headSha } = await resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7', lookup,
+    })
+
+    expect(await filesChanged(repo, baseSha, headSha)).toEqual(['a.py'])
+    expect(await filesChanged(repo, merged.mainTip, headSha))
+      .toEqual(['drift1.py', 'drift2.py'])
+  })
+
+  it('says so when it falls back to the fork point', async () => {
+    const repo = await cloneOf(merged)
+    const { lookup } = lookupReturning({
+      headRefOid: merged.prHead, commits: [{ oid: merged.prHead }], state: 'MERGED',
+    })
+    const lines: string[] = []
+    await resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7',
+      lookup, onProgress: l => lines.push(l),
+    })
+    expect(lines.some(l => l.includes('already contains this pull request'))).toBe(true)
+    expect(lines.some(l => l.includes('(fork point with main)'))).toBe(true)
+  })
+
+  it('still uses the merge base when the base branch does not contain the PR', async () => {
+    // Squash and rebase leave the original head off the branch, so nothing
+    // above should fire for them — the ordinary merge base is already right.
+    const repo = await localRepo()
+    const { lookup } = lookupReturning()
+    const lines: string[] = []
+    const { baseSha } = await resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7',
+      lookup, onProgress: l => lines.push(l),
+    })
+    expect(baseSha).toBe(upstream.forkPoint)
+    expect(lines.some(l => l.includes('already contains'))).toBe(false)
+    expect(lines.some(l => l.includes('(merge-base with main)'))).toBe(true)
+  })
+
+  it('refuses when an absorbed PR reports no commits to recover from', async () => {
+    const repo = await cloneOf(merged)
+    const { lookup } = lookupReturning({
+      headRefOid: merged.prHead, commits: [], state: 'MERGED',
+    })
+    await expect(resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7', lookup,
+    })).rejects.toThrow(/no commits of its own/)
+  })
+
+  it('refuses a recovered fork point that is not an ancestor of the head', async () => {
+    // Guards the one assumption this rests on: that the commits arrive oldest
+    // first. Handed the wrong commit, it must fail rather than quietly diff
+    // from somewhere inside the pull request.
+    const repo = await cloneOf(merged)
+    const { lookup } = lookupReturning({
+      headRefOid: merged.prHead,
+      commits: [{ oid: merged.mainTip }],
+      state: 'MERGED',
+    })
+    await expect(resolvePr({
+      repoRoot: repo, input: 'https://github.com/acme/widgets/pull/7', lookup,
+    })).rejects.toThrow(/not an ancestor of the head/)
   })
 
   it('refuses a shallow clone rather than silently using the base branch tip', async () => {
