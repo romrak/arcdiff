@@ -1,16 +1,16 @@
-README.md
-  s_3835612dc0b108::t_85736bcedb65f6 131-146,232
 a.txt
   s_3835612dc0b108::t_b4cdde3c92cd60 1
+README.md
+  s_3835612dc0b108::t_85736bcedb65f6 131-146,232
 packages/git/src/pr.test.ts
   s_3835612dc0b108::t_8cfdb8431072e0 163-164,194,197-232,239,245,247,253-256,272,413-502
 packages/git/src/pr.ts
-  s_3835612dc0b108::t_374eceeeff856b 35-40,152-153,230-291,424-433,440
+  s_3835612dc0b108::t_374eceeeff856b 35-40,152-153,230-290,423-432,439
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.7.4",
-  "base_commit_sha": "e38f9e3b810da88e0cc01a484f67825e29c4a8ef",
+  "base_commit_sha": "180f52034a0ef9fd3f2a41f67ed3a895ba197954",
   "prompts": {},
   "sessions": {
     "s_3835612dc0b108": {
